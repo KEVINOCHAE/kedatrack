@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Kedatrack {% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+          /* Logo Text Styling */
+    .logo-text {
+        font-family: 'Orbitron', sans-serif;
+        color: #28a745;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        animation: glitch 2s infinite;
+    }
+
+    @keyframes glitch {
+        0% {
+            text-shadow: 2px 2px 1px rgba(255, 0, 0, 0.75), -2px -2px 1px rgba(0, 255, 0, 0.75);
+        }
+        25% {
+            text-shadow: -2px -2px 1px rgba(255, 0, 0, 0.75), 2px 2px 1px rgba(0, 255, 0, 0.75);
+        }
+        50% {
+            text-shadow: 0 0 1px rgba(255, 0, 0, 0.75), 0 0 1px rgba(0, 255, 0, 0.75);
+        }
+    }
+
+    /* Ripple Effect for Buttons */
+    .ripple {
+        position: relative;
+        overflow: hidden;
+        transition: background 0.4s;
+    }
+
+    .ripple:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 100%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .ripple:hover:after {
+        width: 200%;
+        height: 200%;
+    }
+
+        .navbar {
+            background-color: #1a1a1a;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #ffffff !important;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-brand:hover {
+            color: #007bff !important;
+        }
+
+        .navbar .nav-link {
+            color: #ffffff !important;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #007bff !important;
+            text-decoration: underline;
+        }
+
+
+        .container {
+            margin-top: 2rem;
+        }
+
+        .card {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: none;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-tech {
+            background-color: #007bff;
+            color: #ffffff;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-tech:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+         <a class="navbar-brand  display-5 logo-text " href="{{ url_for('main.home') }}">Kedatrack</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {% if current_user.is_authenticated and current_user.has_role('Admin') %}
+                    <li class="nav-item"> <a class="nav-link" href="{{ url_for('admin.dashboard') }}">Dashboard</a></li>
+                    
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container fade-in">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+<!-- Bootstrap JS, jQuery, and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>

@@ -1,0 +1,73 @@
+{% extends 'admin_base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Admin Dashboard</h1>
+    
+  </div>
+
+  <p class="lead">Welcome to the admin panel.</p>
+
+ 
+  <h3>Recent Activity</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Action</th>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for activity in recent_activities %}
+      <tr>
+        <td>{{ activity.action }}</td>
+        <td>{{ activity.user }}</td>
+        <td>{{ activity.date.strftime('%Y-%m-%d %H:%M') }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  
+
+  <footer class="mt-4 text-center">
+    <p>&copy; {{ current_year }} kedatrack. All rights reserved.</p>
+  </footer>
+</div>
+
+<script>
+  const toggleButton = document.getElementById('theme-toggle');
+  toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+
+<style>
+  body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  body.dark-mode .card {
+    background-color: #1e1e1e;
+    border-color: #333;
+  }
+
+  body.dark-mode .btn-outline-primary {
+    color: #bb86fc;
+    border-color: #bb86fc;
+  }
+
+  table {
+    background-color: #fff;
+  }
+
+  table tr:hover {
+    background-color: #f5f5f5;
+  }
+</style>
+{% endblock %}
