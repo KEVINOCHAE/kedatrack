@@ -127,91 +127,86 @@
 </style>
 
 <!-- Mission, Vision, Values Section -->
-<section class="py-5 position-relative bg-light" id="mission-vision-values" data-aos="fade-up">
+<section class="py-5 position-relative bg-light">
     <div class="container text-center">
         <h2 class="display-4 fw-bold mb-5" style="font-family: 'Poppins', sans-serif; color: #343a40;">
             Our Mission, Vision & Values
         </h2>
-        <div class="row g-4">
-            <!-- Navigation Links for Mission, Vision & Values -->
-            <div class="col-12">
-                <ul class="nav nav-pills justify-content-center mb-4" id="missionVisionValuesTabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="mission-tab" data-bs-toggle="pill" href="#mission" role="tab" aria-controls="mission" aria-selected="true">
-                            <span class="nav-link-text">Mission</span>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="vision-tab" data-bs-toggle="pill" href="#vision" role="tab" aria-controls="vision" aria-selected="false">
-                            <span class="nav-link-text">Vision</span>
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="values-tab" data-bs-toggle="pill" href="#values" role="tab" aria-controls="values" aria-selected="false">
-                            <span class="nav-link-text">Values</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
+        <!-- Navigation Links for Sections -->
+        <div class="nav nav-pills justify-content-center mb-4" id="missionVisionValuesNav" role="tablist">
+            <a class="nav-link active" id="missionTab" data-bs-toggle="pill" href="#mission" role="tab" aria-controls="mission" aria-selected="true">
+                Mission
+            </a>
+            <a class="nav-link" id="visionTab" data-bs-toggle="pill" href="#vision" role="tab" aria-controls="vision" aria-selected="false">
+                Vision
+            </a>
+            <a class="nav-link" id="valuesTab" data-bs-toggle="pill" href="#values" role="tab" aria-controls="values" aria-selected="false">
+                Values
+            </a>
         </div>
 
-        <div class="tab-content">
-            <!-- Mission Content -->
-            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab" data-aos="zoom-in-up">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card border-0 shadow-lg h-100 text-center p-5" style="border-radius: 20px; transition: transform 0.3s ease-in-out;">
-                            <div class="icon-circle mb-4 mx-auto" style="background: #007bff; color: white; transition: transform 0.3s;">
-                                <i class="fas fa-bullseye fa-2x"></i>
-                            </div>
-                            <h4 class="fw-bold" style="color: #007bff; font-size: 1.5rem; margin-top: 15px;">Mission</h4>
-                            <p class="text-muted mt-3" style="font-size: 1.1rem;">
-                                Empower businesses with cutting-edge fleet management solutions to drive efficiency and profitability.
-                            </p>
-                            <button class="btn btn-primary shadow-lg mt-3" style="border-radius: 30px; font-size: 1rem; transition: background-color 0.3s;" data-bs-toggle="modal" data-bs-target="#missionModal">
-                                <i class="fas fa-arrow-right"></i> Learn More
-                            </button>
-                        </div>
+        <!-- Tab Content -->
+        <div class="tab-content" id="missionVisionValuesTabContent">
+            <!-- Mission Tab -->
+            <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="missionTab">
+                <div class="card border-0 shadow-sm text-center p-4" style="border-radius: 15px;">
+                    <div class="icon-circle mb-4 mx-auto" style="background: #007bff; color: white;">
+                        <i class="fas fa-bullseye fa-3x"></i>
+                    </div>
+                    <h4 class="fw-bold" style="color: #007bff;">Our Mission</h4>
+                    <p class="text-muted mt-3">
+                        Empower businesses with cutting-edge fleet management solutions to drive efficiency and profitability.
+                    </p>
+                    <button class="btn btn-outline-primary mt-4" data-bs-toggle="collapse" href="#missionDetails" role="button" aria-expanded="false" aria-controls="missionDetails">
+                        Learn More
+                    </button>
+                    <div class="collapse mt-3" id="missionDetails">
+                        <p class="text-muted">
+                            Our mission is to provide scalable, intelligent solutions for managing fleets. We combine advanced technology with user-friendly platforms to streamline operations, reduce costs, and optimize fleet performance.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Vision Content -->
-            <div class="tab-pane fade" id="vision" role="tabpanel" aria-labelledby="vision-tab" data-aos="zoom-in-up">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card border-0 shadow-lg h-100 text-center p-5" style="border-radius: 20px; transition: transform 0.3s ease-in-out;">
-                            <div class="icon-circle mb-4 mx-auto" style="background: #28a745; color: white; transition: transform 0.3s;">
-                                <i class="fas fa-lightbulb fa-2x"></i>
-                            </div>
-                            <h4 class="fw-bold" style="color: #28a745; font-size: 1.5rem; margin-top: 15px;">Vision</h4>
-                            <p class="text-muted mt-3" style="font-size: 1.1rem;">
-                                To be the global leader in intelligent fleet monitoring systems, setting the standard for innovation and excellence.
-                            </p>
-                            <button class="btn btn-primary shadow-lg mt-3" style="border-radius: 30px; font-size: 1rem;" data-bs-toggle="modal" data-bs-target="#visionModal">
-                                <i class="fas fa-arrow-right"></i> Learn More
-                            </button>
-                        </div>
+            <!-- Vision Tab -->
+            <div class="tab-pane fade" id="vision" role="tabpanel" aria-labelledby="visionTab">
+                <div class="card border-0 shadow-sm text-center p-4" style="border-radius: 15px;">
+                    <div class="icon-circle mb-4 mx-auto" style="background: #28a745; color: white;">
+                        <i class="fas fa-lightbulb fa-3x"></i>
+                    </div>
+                    <h4 class="fw-bold" style="color: #28a745;">Our Vision</h4>
+                    <p class="text-muted mt-3">
+                        To be the global leader in intelligent fleet monitoring systems, setting the standard for innovation and excellence.
+                    </p>
+                    <button class="btn btn-outline-success mt-4" data-bs-toggle="collapse" href="#visionDetails" role="button" aria-expanded="false" aria-controls="visionDetails">
+                        Learn More
+                    </button>
+                    <div class="collapse mt-3" id="visionDetails">
+                        <p class="text-muted">
+                            We envision a world where every fleet is powered by our innovative solutions, helping businesses achieve more with less. Our goal is to continuously push the boundaries of technology and service excellence.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Values Content -->
-            <div class="tab-pane fade" id="values" role="tabpanel" aria-labelledby="values-tab" data-aos="zoom-in-up">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card border-0 shadow-lg h-100 text-center p-5" style="border-radius: 20px; transition: transform 0.3s ease-in-out;">
-                            <div class="icon-circle mb-4 mx-auto" style="background: #ffc107; color: white; transition: transform 0.3s;">
-                                <i class="fas fa-handshake fa-2x"></i>
-                            </div>
-                            <h4 class="fw-bold" style="color: #ffc107; font-size: 1.5rem; margin-top: 15px;">Values</h4>
-                            <p class="text-muted mt-3" style="font-size: 1.1rem;">
-                                Integrity, Innovation, Customer Focus, and Sustainability are at the heart of everything we do.
-                            </p>
-                            <button class="btn btn-primary shadow-lg mt-3" style="border-radius: 30px; font-size: 1rem;" data-bs-toggle="modal" data-bs-target="#valuesModal">
-                                <i class="fas fa-arrow-right"></i> Learn More
-                            </button>
-                        </div>
+            <!-- Values Tab -->
+            <div class="tab-pane fade" id="values" role="tabpanel" aria-labelledby="valuesTab">
+                <div class="card border-0 shadow-sm text-center p-4" style="border-radius: 15px;">
+                    <div class="icon-circle mb-4 mx-auto" style="background: #ffc107; color: white;">
+                        <i class="fas fa-handshake fa-3x"></i>
+                    </div>
+                    <h4 class="fw-bold" style="color: #ffc107;">Our Values</h4>
+                    <p class="text-muted mt-3">
+                        Integrity, Innovation, Customer Focus, and Sustainability are at the heart of everything we do.
+                    </p>
+                    <button class="btn btn-outline-warning mt-4" data-bs-toggle="collapse" href="#valuesDetails" role="button" aria-expanded="false" aria-controls="valuesDetails">
+                        Learn More
+                    </button>
+                    <div class="collapse mt-3" id="valuesDetails">
+                        <p class="text-muted">
+                            Our values guide our decision-making and interactions with clients. We prioritize trust, innovation, and a commitment to sustainability in all our initiatives, ensuring a long-lasting, positive impact on both the environment and our partners.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -219,85 +214,8 @@
     </div>
 </section>
 
-<!-- Modals for Detailed Information -->
-<!-- Mission Modal -->
-<div class="modal fade" id="missionModal" tabindex="-1" aria-labelledby="missionModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="missionModalLabel">Our Mission</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>We aim to empower businesses by providing them with innovative fleet management solutions that help improve operational efficiency, reduce costs, and enhance profitability. Through cutting-edge technology, we ensure that businesses can monitor their fleet in real-time and make data-driven decisions for growth.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Vision Modal -->
-<div class="modal fade" id="visionModal" tabindex="-1" aria-labelledby="visionModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="visionModalLabel">Our Vision</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Our vision is to be the global leader in fleet monitoring solutions, setting the benchmark for excellence, innovation, and sustainability. We are committed to driving the future of transportation by providing solutions that offer more than just efficiency — they offer true transformation in fleet management.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Values Modal -->
-<div class="modal fade" id="valuesModal" tabindex="-1" aria-labelledby="valuesModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="valuesModalLabel">Our Values</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>At the core of everything we do lies our commitment to Integrity, Innovation, Customer Focus, and Sustainability. These values guide our actions, shape our relationships, and ensure we maintain our position as a trusted leader in the fleet management industry.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Additional Styling -->
 <style>
-    .nav-pills .nav-link {
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 1.2rem;
-        color: #343a40;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .nav-pills .nav-link.active {
-        background-color: #f8f9fa;
-        color: #007bff;
-    }
-
-    .card {
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
-
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
     .icon-circle {
         width: 90px;
         height: 90px;
@@ -305,29 +223,56 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.3s ease;
+        font-size: 1.5rem;
     }
 
-    .card:hover .icon-circle {
-        transform: scale(1.1);
+    .card {
+        transition: all 0.3s ease-in-out;
     }
 
-    .modal-content {
-        border-radius: 15px;
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Tab styling */
+    .nav-link {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .nav-link.active {
+        color: #0056b3 !important;
+        border-color: #0056b3 !important;
+    }
+
+    .nav-pills .nav-link {
+        border-radius: 50px;
+        padding: 12px 30px;
+        margin: 0 10px;
+    }
+
+    .nav-pills .nav-link:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    /* Collapse transition */
+    .collapse {
+        transition: all 0.3s ease;
     }
 </style>
-
-<!-- AOS Library -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-    });
-</script>
-
 
 <!-- JavaScript for Bootstrap Collapse and Tabs -->
 <script>
