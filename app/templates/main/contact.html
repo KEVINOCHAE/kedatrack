@@ -7,16 +7,7 @@
     <h1 class="text-center contact-header mb-4">Contact Us</h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            <div class="alert alert-{{ messages[0][0] }} alert-dismissible fade show" role="alert">
-                {{ messages[0][1] }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            {% endif %}
-            {% endwith %}
+            
 
             <div class="contact-form bg-light p-4 rounded shadow-sm">
                 <form method="POST" action="{{ url_for('main.contact') }}">

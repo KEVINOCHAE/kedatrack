@@ -11,3 +11,4 @@ admin_bp = Blueprint('admin', __name__)
 def dashboard():
     
     return render_template('admin/dashboard.html')
+

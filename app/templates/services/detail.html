@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ service.name }}{% endblock %}
+
+{% block content %}
+<div class="service-detail">
+    <h1>{{ service.name }}</h1>
+    <img src="{{ url_for('static', filename=service.image_path) }}" alt="{{ service.name }}">
+    <p><strong>Tagline:</strong> {{ service.tagline }}</p>
+    <p>{{ service.description }}</p>
+    <h3>Related Tags:</h3>
+    <ul>
+        {% for tag in service.tags %}
+        <li>{{ tag.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('services.index') }}">Back to Services</a>
+</div>
+{% endblock %}

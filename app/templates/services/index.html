@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+<h1>Our Services</h1>
+<div class="services-grid">
+    {% for service in services %}
+    <div class="service-card">
+        <img src="{{ url_for('static', filename=service.image_path) }}" alt="{{ service.name }}">
+        <h2>{{ service.name }}</h2>
+        <p>{{ service.tagline }}</p>
+        <a href="{{ url_for('services.detail', id=service.id) }}">Learn More</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

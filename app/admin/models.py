@@ -71,6 +71,42 @@ class User(UserMixin, db.Model):
         return f'<User {self.username}>'
 
 
- # ---------------------------------------
-# Wishlist Model
-# ---------------------------------------
+class Service(db.Model):
+    __tablename__ = 'services'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    image_url = db.Column(db.String(255), nullable=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<Service {self.title}>'
+
+class Project(db.Model):
+    __tablename__ = 'projects'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    client_name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    start_date = db.Column(db.DateTime, nullable=True)
+    end_date = db.Column(db.DateTime, nullable=True)
+    image_url = db.Column(db.String(255), nullable=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<Project {self.title} for {self.client_name}>'
+
+class Testimonial(db.Model):
+    __tablename__ = 'testimonials'
+
+    id = db.Column(db.Integer, primary_key=True)
+    client_name = db.Column(db.String(100), nullable=False)
+    feedback = db.Column(db.Text, nullable=False)
+    rating = db.Column(db.Integer, nullable=True)  # Out of 5
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<Testimonial by {self.client_name}>'
+        
