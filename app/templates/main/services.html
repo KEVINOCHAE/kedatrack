@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Page Loader -->
+<div id="loader" class="page-loader">
+    <div class="spinner"></div>
+</div>
+
+<!-- Services Page -->
+<section class="services-page py-5">
+    <div class="container">
+        <!-- Introduction Section -->
+        <div class="row justify-content-center text-center">
+            <div class="col-12">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-description">
+                    At Kedatrack Limited, we provide cutting-edge IT solutions to help businesses optimize their operations, improve security, and achieve growth. Our expertise spans fleet management, security systems, and advanced software development.
+                </p>
+            </div>
+        </div>
+
+        <!-- Service Cards Section -->
+        <div class="row mt-5 justify-content-center">
+            <!-- Service Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-info">
+                        <h4 class="service-title">Fleet Management Solutions</h4>
+                        <p class="service-description">Advanced GPS tracking, fuel monitoring, and theft detection solutions to optimize your fleet operations.</p>
+                        <a href="/service-details/fleet-management" class="btn btn-primary btn-lg">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-info">
+                        <h4 class="service-title">Security Systems</h4>
+                        <p class="service-description">CCTV cameras, access control, and video surveillance solutions to enhance your security infrastructure.</p>
+                        <a href="/service-details/security-systems" class="btn btn-primary btn-lg">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-info">
+                        <h4 class="service-title">Software Development</h4>
+                        <p class="service-description">Custom software solutions tailored to your business needs, from web development to mobile apps.</p>
+                        <a href="/service-details/software-development" class="btn btn-primary btn-lg">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Page Loader */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Services Page */
+.services-page {
+    background-color: #f8f9fa;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.section-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Service Cards */
+.service-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-image {
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+}
+
+.service-info {
+    padding: 20px;
+}
+
+.service-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.service-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-card {
+        height: auto;
+    }
+}
+</style>
+
+<script>
+    // Hide the loader after the page is fully loaded
+    window.addEventListener('load', function () {
+        document.getElementById('loader').style.opacity = '0';
+        setTimeout(function () {
+            document.getElementById('loader').style.display = 'none';
+        }, 1000);
+    });
+</script>
+
+{% endblock %}

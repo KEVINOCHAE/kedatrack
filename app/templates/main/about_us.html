@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Page Loader -->
+<div id="loader" class="page-loader">
+    <div class="spinner"></div>
+</div>
+
+<!-- About Us Section -->
+<section class="about-us-page py-5">
+    <div class="container">
+        <!-- Section 1: About Us with Image and Text on the Same Row -->
+        <div class="row align-items-center justify-content-center text-center text-md-left">
+            <div class="col-md-6">
+                <h2 class="section-title">About Us</h2>
+                <p class="section-description">
+                    Kedatrack Limited is an IT Services Provider Company whose solutions range from IoT solutions such as Advanced FLeet Management; automobile GPS tracking, fuel level monitoring and Theft detection and Cold  Storage/ Cold chain Temperature  & Humidity Monitoring solutions, Ai Powered Video Telematics  (Dashcams, DSM , ADAS cameras) to Security  services such as CCTV Cameras and Access Control systems. Further, we also provide Secure Innovative Cutting-Edge software Solutions; Web Design & Mobile App Development.
+
+ Our solutions are backed by state-of-the-art technology in smart sensing, telecommunications, and cloud computing.
+
+ </p>
+               
+            </div>
+            <div class="col-md-6">
+                <div class="about-us-image" style="background-image: url('https://images.unsplash.com/photo-1592194996308-7b43878e84a6');"></div>
+            </div>
+            <p class="section-description p-2">
+                Additionally, we also offer General merchandise Supplies services; providing a wide range of products and services to private and government sectors, including computers and other IT hardwares and accessories, office furniture and equipment, printing supplies, staff uniforms, etc.
+ The company aims to develop long-term partnerships with customers by consistently meeting and exceeding their expectations.
+                
+            </p>
+            <a href="#contact" class="btn btn-primary btn-lg mt-4">Get in Touch</a>
+        </div>
+
+        <!-- Section 2: Our Journey with AOS Animations and FontAwesome Icons -->
+        <div class="row our-journey mt-5 justify-content-center text-center">
+            <div class="col-12">
+                <h3 class="section-title">Our Journey</h3>
+                <p class="section-description">A look back at how we evolved into the leaders of fleet management solutions.</p>
+            </div>
+            <div class="col-md-4 mt-4" data-aos="fade-up" data-aos-duration="1000">
+                <div class="journey-card">
+                    <div class="journey-icon"><i class="fas fa-cogs"></i></div>
+                    <h4 class="journey-title">Start of Innovation</h4>
+                    <p>Our journey began with a simple vision to revolutionize fleet management.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mt-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <div class="journey-card">
+                    <div class="journey-icon"><i class="fas fa-rocket"></i></div>
+                    <h4 class="journey-title">Expanding Solutions</h4>
+                    <p>As we grew, we introduced innovative solutions to meet the needs of modern businesses.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mt-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <div class="journey-card">
+                    <div class="journey-icon"><i class="fas fa-trophy"></i></div>
+                    <h4 class="journey-title">Leading the Industry</h4>
+                    <p>Today, we’re proud to lead the industry in fleet management solutions globally.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Meet the Team with Sophisticated Design -->
+        <div class="row meet-team mt-5 justify-content-center text-center">
+            <div class="col-12">
+                <h3 class="section-title">Meet the Team</h3>
+                <p class="section-description">Our dedicated team is at the core of our success, driving innovation and excellence.</p>
+            </div>
+            <div class="team-carousel">
+                <div class="team-member" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="team-image" style="background-image: url('https://randomuser.me/ap/portraits/men/1.jpg');"></div>
+                    <div class="team-info">
+                        <h5 class="team-name">Kevin Ochae</h5>
+                        <p class="team-role">CEO & Founder</p>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="team-image" style="background-image: url('https://randomser.me/api/portraits/women/1.jpg');"></div>
+                    <div class="team-info">
+                        <h5 class="team-name">Ochae Victor</h5>
+                        <p class="team-role">Chief Technology Officer</p>
+                    </div>
+                </div>
+                <div class="team-member" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="team-image" style="background-image: url('https://randouser.me/api/portraits/men/2.jpg');"></div>
+                    <div class="team-info">
+                        <h5 class="team-name">Victor Odhiambo</h5>
+                        <p class="team-role">Operations Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Our Vision -->
+        <div class="row vision mt-5 justify-content-center text-center">
+            <div class="col-12">
+                <h3 class="section-title">Our Vision</h3>
+                <p class="section-description">To create the future of fleet management by harnessing technology to enable businesses worldwide to thrive.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Page Loader */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* About Us Section */
+.about-us-page {
+    background-color: #f8f9fa;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.section-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* About Us Image */
+.about-us-image {
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-us-image:hover {
+    transform: scale(1.05);
+}
+
+/* Our Journey Section */
+.journey-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.journey-card:hover {
+    transform: translateY(-10px);
+}
+
+.journey-icon {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.journey-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Team Section */
+.team-carousel {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.team-member {
+    width: 250px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+}
+
+.team-image {
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.team-info {
+    margin-top: 20px;
+}
+
+.team-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.team-role {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: #777;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-us-image {
+        height: 250px;
+    }
+
+    .team-carousel {
+        flex-direction: column;
+    }
+}
+</style>
+
+<script>
+    // Hide the loader after the page is fully loaded
+    window.addEventListener('load', function () {
+        document.getElementById('loader').style.opacity = '0';
+        setTimeout(function () {
+            document.getElementById('loader').style.display = 'none';
+        }, 1000);
+    });
+</script>
+
+{% endblock %}

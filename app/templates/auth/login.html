@@ -3,37 +3,45 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="container login-section mt-5">
-    <h2 class="text-center mb-4">Login</h2>
+<!-- Login Section -->
+<div class="container login-section mt-5" data-aos="fade-in">
+    <h2 class="text-center mb-4">Welcome Back</h2>
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card shadow-sm">
+            <div class="card shadow-lg p-4">
                 <div class="card-body">
                     <form method="POST" action="{{ url_for('auth.login') }}">
                         {{ form.hidden_tag() }}
                         
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             {{ form.email.label(class="form-label") }}
-                            {{ form.email(class="form-control", placeholder="Email Address") }}
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                {{ form.email(class="form-control", placeholder="Email Address") }}
+                            </div>
                             {% if form.email.errors %}
-                                <div class="text-danger">{{ form.email.errors[0] }}</div>
+                                <div class="text-danger mt-1">{{ form.email.errors[0] }}</div>
                             {% endif %}
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-4">
                             {{ form.password.label(class="form-label") }}
-                            {{ form.password(class="form-control", placeholder="Password") }}
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                {{ form.password(class="form-control", placeholder="Password") }}
+                            </div>
                             {% if form.password.errors %}
-                                <div class="text-danger">{{ form.password.errors[0] }}</div>
+                                <div class="text-danger mt-1">{{ form.password.errors[0] }}</div>
                             {% endif %}
                         </div>
 
                         <div class="form-group">
-                            {{ form.submit(class="btn btn-tech btn-block") }}
+                            {{ form.submit(class="btn btn-tech btn-block btn-lg") }}
                         </div>
                     </form>
-                    <div class="text-center">
-                        <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a></p>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="{{ url_for('auth.register') }}" class="text-primary">Register here</a></p>
+                        <p><a href="{{ url_for('auth.register') }}" class="text-secondary">Forgot your password?</a></p>
                     </div>
                 </div>
             </div>
@@ -41,32 +49,113 @@
     </div>
 </div>
 
+<!-- Styles -->
 <style>
+    /* Login Section */
     .login-section {
-        padding: 30px;
-        background-color: #f4f4f4;
-        border-radius: 8px;
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        padding: 50px 15px;
+    }
+
+    h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 30px;
+        text-transform: uppercase;
     }
 
     .card {
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Input Wrapper */
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: #007bff;
+        font-size: 18px;
+    }
+
+    .form-control {
+        padding-left: 40px;
         border-radius: 8px;
-    }
-
-    .btn-tech {
-        background-color: #007bff;
-        color: #fff;
-    }
-
-    .btn-tech:hover {
-        background-color: #0056b3;
+        height: 45px;
+        font-size: 1rem;
     }
 
     .form-label {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    /* Buttons */
+    .btn-tech {
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-tech:hover {
+        transform: translateY(-3px);
+        box-shadow: 0px 10px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    /* Error Messages */
+    .text-danger {
+        font-size: 0.9rem;
         font-weight: 500;
     }
 
-    .text-danger {
+    /* Links */
+    .text-primary {
+        font-weight: 600;
+        color: #007bff !important;
+        transition: color 0.3s ease;
+    }
+
+    .text-primary:hover {
+        color: #0056b3 !important;
+        text-decoration: none;
+    }
+
+    .text-secondary {
+        color: #6c757d !important;
         font-size: 0.9rem;
     }
+
+    /* Animations */
+    [data-aos="fade-in"] {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease-out;
+    }
+
+    [data-aos="fade-in"].aos-animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
 </style>
+
+<!-- AOS Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const elements = document.querySelectorAll('[data-aos="fade-in"]');
+        elements.forEach(el => {
+            el.classList.add('aos-animate');
+        });
+    });
+</script>
 {% endblock %}

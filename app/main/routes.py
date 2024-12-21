@@ -68,3 +68,12 @@ def contact():
 @main_bp.route('/privacy-policy')
 def privacy_policy():
     return render_template('main/privacy_policies.html')
+
+
+@main_bp.route('/about_us')
+def about_us():
+    return render_template('main/about_us.html')
+
+@main_bp.route('/services')
+def services():
+    return render_template('main/services.html')
