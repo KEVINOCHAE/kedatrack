@@ -3,6 +3,11 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<!-- Page Loader -->
+<div id="loader" class="page-loader">
+    <div class="spinner"></div>
+</div>
+
 <!-- Login Section -->
 <div class="container login-section mt-5" data-aos="fade-in">
     <h2 class="text-center mb-4">Welcome Back</h2>
@@ -41,7 +46,7 @@
                     </form>
                     <div class="text-center mt-3">
                         <p>Don't have an account? <a href="{{ url_for('auth.register') }}" class="text-primary">Register here</a></p>
-                        <p><a href="{{ url_for('auth.register') }}" class="text-secondary">Forgot your password?</a></p>
+                       
                     </div>
                 </div>
             </div>
@@ -51,6 +56,36 @@
 
 <!-- Styles -->
 <style>
+    /* Page Loader */
+    .page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 1;
+        transition: opacity 1s ease-out;
+    }
+
+    .spinner {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #007bff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
     /* Login Section */
     .login-section {
         background-color: #f8f9fa;
@@ -149,13 +184,19 @@
     }
 </style>
 
-<!-- AOS Script -->
+<!-- AOS and Loader Script -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // AOS Animation
         const elements = document.querySelectorAll('[data-aos="fade-in"]');
         elements.forEach(el => {
             el.classList.add('aos-animate');
         });
+
+        // Page Loader
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 1000);
     });
 </script>
 {% endblock %}

@@ -21,41 +21,18 @@
 
         <!-- Service Cards Section -->
         <div class="row mt-5 justify-content-center">
-            <!-- Service Card 1 -->
+            {% for key, service in services.items() %}
             <div class="col-md-4 mb-4">
                 <div class="service-card" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
+                    <div class="service-image" style="background-image: url('{{ service.image_url }}');"></div>
                     <div class="service-info">
-                        <h4 class="service-title">Fleet Management Solutions</h4>
-                        <p class="service-description">Advanced GPS tracking, fuel monitoring, and theft detection solutions to optimize your fleet operations.</p>
-                        <a href="/service-details/fleet-management" class="btn btn-primary btn-lg">Learn More</a>
+                        <h4 class="service-title">{{ service.title }}</h4>
+                        <p class="service-description">{{ service.description }}</p>
+                        <a href="/service-details/{{ service.id }}" class="btn btn-primary btn-lg">Learn More</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Service Card 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
-                    <div class="service-info">
-                        <h4 class="service-title">Security Systems</h4>
-                        <p class="service-description">CCTV cameras, access control, and video surveillance solutions to enhance your security infrastructure.</p>
-                        <a href="/service-details/security-systems" class="btn btn-primary btn-lg">Learn More</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service Card 3 -->
-            <div class="col-md-4 mb-4">
-                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                    <div class="service-image" style="background-image: url('https://via.placeholder.com/400x300');"></div>
-                    <div class="service-info">
-                        <h4 class="service-title">Software Development</h4>
-                        <p class="service-description">Custom software solutions tailored to your business needs, from web development to mobile apps.</p>
-                        <a href="/service-details/software-development" class="btn btn-primary btn-lg">Learn More</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
