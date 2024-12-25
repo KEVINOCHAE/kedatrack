@@ -9,10 +9,10 @@
 
 <section class="hero-new-v3 d-flex align-items-center">
     <!-- Hero Content -->
-    <div class="container">
-        <div class="row align-items-center">
+    <div class="container-fluid mt-5 ">
+        
             <!-- Left: Text Content with Center Alignment -->
-            <div class="col-lg-6 text-content d-flex flex-column justify-content-center align-items-center position-relative">
+            <div class="col-lg-12 text-content d-flex flex-column justify-content-center align-items-center position-relative">
                 <div class="content-wrapper text-center" data-aos="fade-up">
                     <h2 class="headline">
                         The Future of <span>Fleet Intelligence</span>
@@ -29,38 +29,89 @@
                 <div class="background-image"></div>
             </div>
 
-            <!-- Right: Animated Feature Cards -->
-            <div class="col-lg-6 position-relative feature-section">
-                <div class="feature-card shadow" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="icon">
-                        <img src="https://img.icons8.com/fluency/48/000000/track-and-field.png" alt="Tracking">
-                    </div>
-                    <div class="text">
-                        <h3>Real-Time Tracking</h3>
-                        <p>Monitor vehicles and assets with live updates.</p>
-                    </div>
-                </div>
-
-                <div class="feature-card shadow" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="icon">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2305/2305733.png" alt="Optimization" width="48" height="48">
-                    </div>
-                    <div class="text">
-                        <h3>Smart Optimization</h3>
-                        <p>Reduce costs and enhance fleet performance.</p>
-                    </div>
-                </div>
-
-                <div class="feature-card shadow" data-aos="zoom-in" data-aos-delay="700">
-                    <div class="icon">
-                        <img src="https://img.icons8.com/fluency/48/000000/report-card.png" alt="Analytics">
-                    </div>
-                    <div class="text">
-                        <h3>Advanced Analytics</h3>
-                        <p>Gain actionable insights from real-time data.</p>
-                    </div>
-                </div>
+          <!-- Right: Animated Feature Cards -->
+<div class="col-lg-12 position-relative feature-section">
+    <div class="feature-row d-flex justify-content-between">
+        <!-- Feature Card 1 -->
+        <div class="feature-card shadow" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon">
+                <img src="https://img.icons8.com/fluency/48/000000/track-and-field.png" alt="Tracking">
             </div>
+            <div class="text">
+                <h3>Real-Time Tracking</h3>
+                <p>Monitor vehicles and assets with live updates.</p>
+            </div>
+        </div>
+
+        <!-- Feature Card 2 -->
+        <div class="feature-card shadow" data-aos="zoom-in" data-aos-delay="400">
+            <div class="icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2305/2305733.png" alt="Optimization" width="48" height="48">
+            </div>
+            <div class="text">
+                <h3>Smart Optimization</h3>
+                <p>Reduce costs and enhance fleet performance.</p>
+            </div>
+        </div>
+
+        <!-- Feature Card 3 -->
+        <div class="feature-card shadow" data-aos="zoom-in" data-aos-delay="700">
+            <div class="icon">
+                <img src="https://img.icons8.com/fluency/48/000000/report-card.png" alt="Analytics">
+            </div>
+            <div class="text">
+                <h3>Advanced Analytics</h3>
+                <p>Gain actionable insights from real-time data.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Updated CSS -->
+<style>
+.feature-row {
+    display: flex;
+    gap: 1rem; /* Add spacing between cards */
+    flex-wrap: nowrap; /* Ensures all cards remain in one row */
+}
+
+.feature-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    flex: 1; /* Makes cards evenly sized */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Ensures consistent text alignment */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon img {
+    max-width: 48px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .feature-row {
+        flex-wrap: wrap; /* Stacks cards vertically on smaller screens */
+    }
+
+    .feature-card {
+        flex: 1 1 100%; /* Takes full width in stacked layout */
+        margin-bottom: 1rem;
+    }
+}
+</style>
+
         </div>
     </div>
 </section>
@@ -379,7 +430,7 @@
 
 
 
-<section class="services-section py-5" style="background: #f7f9fc;">
+
     <div class="container">
         <h4 class="text-center mb-5 section-title"> Services</h4>
 
@@ -431,7 +482,7 @@
             <a href="#" class="btn btn-primary btn-lg">Explore All Services</a>
         </div>
     </div>
-</section>
+
 
 
 
@@ -884,7 +935,7 @@
 </style>
 
 
-<section class="py-5" style="background: #f9fbfd;">
+<section class="py-2" style="background: #f9fbfd;">
     <div class="container">
         <h2 class="fw-bold text-center mb-5" style="font-family: 'Poppins', sans-serif; color: #343a40;">
             Our Trusted Partners
