@@ -17,21 +17,27 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Custom CSS -->
     <style>
         /* General Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f5f7;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+body {
+    background-color: #e3f2fd; /* Optional: Set a default background */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0; /* Reset margin for consistency */
+    padding: 0; /* Reset padding for consistency */
+    line-height: 1.6; /* Set a standard line-height for readability */
+}
+
+h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, span, div {
+    font-family: inherit; /* Ensure all text elements inherit the Montserrat font */
+}
 
         /* Navbar */
 .navbar {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   background-color: #e3f2fd;
+    
     transition: background-color 0.3s, box-shadow 0.3s;
     padding: 0.8rem 1rem;
 }

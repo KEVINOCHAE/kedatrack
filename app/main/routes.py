@@ -332,20 +332,20 @@ def chunk_partners(partners, chunk_size=4):
 testimonials_data = [
     {
         "quote": "Kedatrack transformed our fleet management. Highly recommend!",
-        "name": "Japheth Maina",
-        "position": "CEO",
+        "name": "Nicholas Kikuvi",
+        "position": "Transport Manager-Davies Express Lt",
         "icon_color": "text-primary",
     },
     {
         "quote": "Exceptional service and innovative solutions.",
-        "name": "Antony Kilonzi",
-        "position": "Logistics Manager",
+        "name": "Albert Muchai",
+        "position": "Managing Director- Chev Energies Ltd.",
         "icon_color": "text-success",
     },
     {
         "quote": "Reliable, efficient, and user-friendly.",
-        "name": "sukhaima Asha",
-        "position": "Operations Head",
+        "name": "Philemon Langat",
+        "position": "Logistics Manager - Brookfox Enterprise Ltd.",
         "icon_color": "text-warning",
     },
 ]
