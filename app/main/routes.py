@@ -82,53 +82,174 @@ def about_us():
 services_data = {
     'fleet_management': {
         'id': 'fleet_management',
-        'title': 'Fleet Management Solutions',
-        'description': 'Advanced GPS tracking, fuel monitoring, and theft detection solutions to optimize your fleet operations.',
-        'image_url': 'https://via.placeholder.com/400x300',
+        'title': 'Advanced Fleet Management/Assets Tracking Solutions',
+        'description': (
+            'Kedatrack GPS is a device-agnostic vehicle tracking solution that provides real-time and historical '
+            'views of vehicle movement and usage through mobile and web-based applications.'
+        ),
+        'image_url': 'services/fleet_monitoring.jpeg',
         'detailed_description': 'Detailed information about fleet management solutions...',
-        'more_info': 'Fleet management can help you save costs, increase efficiency, and improve the safety of your operations.'
+        'more_info': (
+            'The solution comprises a device-agnostic platform that integrates tracking devices and sensors from all major '
+            'manufacturers in the world.\n\n'
+            '### Salient features of Kedatrack GPS:\n'
+            '- **Real-Time Tracking & History Playback**:\n'
+            '  - Standard reports\n'
+            '  - Geozone customization\n\n'
+            '- **Last Mile Delivery Management System**:\n'
+            '  - Order dispatch automation & monitoring\n'
+            '  - Route management\n'
+            '  - Fleet maintenance\n\n'
+            '- **Additional Features**:\n'
+            '  - 24/7 live vehicle tracking\n'
+            '  - Instant notifications/alarms via email, SMS, or app notifications\n'
+            '  - Data analysis and flexible custom reporting\n'
+            '  - Driver management and control using iButton technology\n'
+            '  - Engine immobilization through mobile apps or SMS\n'
+            '  - SOS panic buttons and optional voice monitoring\n\n'
+            'Comprehensive fleet management reports include fuel utilization, parking reports, speed monitoring, '
+            'driver performance analysis, and more. Kedatrack GPS empowers fleet managers to enhance operations, '
+            'reduce costs, and improve security.'
+        )
+    },
+    'fuel_monitoring_solutions': {
+        'id': 'fuel_monitoring_solutions',
+        'title': 'Advanced Fuel Monitoring Solutions',
+        'description': (
+            'Kedatrack Fuel Monitoring System is a highly accurate solution designed to eliminate fuel-related '
+            'expenses caused by theft or dishonesty.'
+        ),
+        'image_url': 'services/fuel_monitoring.jpeg',
+        'detailed_description': 'Detailed information about fuel monitoring solutions...',
+        'more_info': (
+            'Kedatrack FUEL Monitoring System offers:\n'
+            '- Real-time fuel level monitoring\n'
+            '- Detailed fuel consumption statistics\n'
+            '- Notifications for fuel fills and theft incidents\n'
+            '- Graphical representation of fuel consumption data\n\n'
+            'This state-of-the-art system helps fleet managers gain full control over fuel costs, '
+            'ensuring transparency and operational efficiency.'
+        )
+    },
+    'refrigerated_truck_and_coldroom_temperature_monitoring_system': {
+        'id': 'refrigerated_truck_and_coldroom_temperature_monitoring_system',
+        'title': 'Refrigerated Truck & Cold-Room Temperature Monitoring System',
+        'description': (
+            'This Temperature & Humidity Management System provides real-time monitoring for cold-chain vehicles, '
+            'cold rooms, and other sensitive environments.'
+        ),
+        'image_url': 'services/refridgeration.jpeg',
+        'detailed_description': 'Detailed information about temperature monitoring systems...',
+        'more_info': (
+            '- Real-time temperature and humidity monitoring\n'
+            '- Door opening detection\n'
+            '- Notifications for temperature deviations\n'
+            '- Ideal for cold-chain logistics, warehouses, and data centers'
+        )
+    },
+    'video_telematics': {
+        'id': 'video_telematics',
+        'title': 'AI-Powered Video Telematics',
+        'description': (
+            'Video telematics combines sensors and AI-powered dashcams to enhance driver safety and fleet management.'
+        ),
+        'image_url': 'services/video_telematics.jpeg',
+        'detailed_description': 'Detailed information about video telematics solutions...',
+        'more_info': (
+            'Key functions include:\n'
+            '- Detecting distracted or drowsy driving\n'
+            '- Contextual event analysis (e.g., harsh braking causes)\n'
+            '- Automated driver coaching and verbal notifications\n\n'
+            'Advanced AI dashcams enable fleet managers to digitize and automate safety programs, reducing risks effectively.'
+        )
     },
     'security_systems': {
         'id': 'security_systems',
         'title': 'Security Systems',
-        'description': 'CCTV cameras, access control, and video surveillance solutions to enhance your security infrastructure.',
-        'image_url': 'https://via.placeholder.com/400x300',
+        'description': (
+            'CCTV cameras, access control, and video surveillance solutions to enhance your security infrastructure.'
+        ),
+        'image_url': 'services/security systems.jpg',
         'detailed_description': 'Detailed information about security systems...',
-        'more_info': 'Security systems provide round-the-clock surveillance and improve the safety of your assets.'
+        'more_info': (
+            '- Professional CCTV installation and maintenance\n'
+            '- Access control systems setup and upgrades\n'
+            '- Comprehensive repair and security infrastructure solutions'
+        )
     },
     'software_development': {
         'id': 'software_development',
         'title': 'Software Development',
-        'description': 'Custom software solutions tailored to your business needs, from web development to mobile apps.',
-        'image_url': 'https://via.placeholder.com/400x300',
+        'description': (
+            'Custom software solutions tailored to your business needs, from web development to mobile apps.'
+        ),
+        'image_url': 'services/sotware_dev.jpg',
         'detailed_description': 'Detailed information about software development...',
-        'more_info': 'Our software development services will help you create custom applications that fit your specific business requirements.'
+        'more_info': 'Our expert developers create innovative software to solve your unique business challenges.'
+    },
+    'aerial_and_satellite_installation_solutions': {
+        'id': 'aerial_and_satellite_installation_solutions',
+        'title': 'Aerial & Satellite Installation Solutions',
+        'description': 'Professional TV aerial and satellite installation services.',
+        'image_url': 'services/satelite.jpeg',
+        'detailed_description': 'Detailed information about aerial and satellite solutions...',
+        'more_info': (
+            '- Indoor and outdoor aerial installations\n'
+            '- Quick and efficient repair services\n'
+            '- Full range of high-quality equipment and upgrades'
+        )
     },
     'it_support': {
         'id': 'it_support',
         'title': 'IT Support and Consultation',
-        'description': 'Comprehensive IT support services for businesses to improve efficiency and manage their technological infrastructure.',
-        'image_url': 'https://via.placeholder.com/400x300',
+        'description': (
+            'Comprehensive IT support services to improve efficiency and manage technological infrastructure.'
+        ),
+        'image_url': 'services/it_support.avif',
         'detailed_description': 'Detailed information about IT support...',
-        'more_info': 'Get the best IT support services that will help you solve technical issues, enhance your infrastructure, and improve performance.'
+        'more_info': (
+            'We offer end-to-end IT support, helping you solve technical issues, enhance performance, and ensure system stability.'
+        )
     },
     'cloud_services': {
         'id': 'cloud_services',
         'title': 'Cloud Solutions',
-        'description': 'Seamless cloud services to help businesses scale, manage data, and enhance security on the cloud.',
-        'image_url': 'https://via.placeholder.com/400x300',
+        'description': (
+            'Seamless cloud services to help businesses scale, manage data, and enhance security on the cloud.'
+        ),
+        'image_url': 'services/cloud.jpg',
         'detailed_description': 'Detailed information about cloud services...',
-        'more_info': 'Our cloud services help you scale your business, store data securely, and ensure high availability of your systems.'
+        'more_info': (
+            'Our cloud solutions include secure data storage, scalable architectures, and high-availability services tailored to your business needs.'
+        )
     },
     'data_analytics': {
         'id': 'data_analytics',
         'title': 'Data Analytics',
-        'description': 'Advanced data analysis tools to help businesses make data-driven decisions and improve performance.',
-        'image_url': 'https://via.placeholder.com/400x300',
+        'description': (
+            'Advanced data analysis tools to help businesses make data-driven decisions and improve performance.'
+        ),
+        'image_url': 'services/data_analytics.jpg',
         'detailed_description': 'Detailed information about data analytics...',
-        'more_info': 'We offer powerful data analytics tools that help you understand your business data better and make informed decisions.'
+        'more_info': (
+            'Our analytics tools provide actionable insights, empowering businesses to identify trends and optimize strategies effectively.'
+        )
+    },
+    'general_merchandise_supplies_services': {
+        'id': 'general_merchandise_supplies_services',
+        'title': 'General Merchandise Supplies Services',
+        'description': (
+            'Providing a wide range of product supply services to private and public sectors.'
+        ),
+        'image_url': 'services/about.jpeg',
+        'detailed_description': 'Detailed information about merchandise supplies...',
+        'more_info': (
+            'We supply IT hardware, office furniture, staff uniforms, and more. '
+            'Our goal is to build long-term partnerships by consistently exceeding expectations.'
+        )
     }
 }
+
 
 
 @main_bp.route('/services')

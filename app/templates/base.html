@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@500;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
@@ -27,190 +29,194 @@
         }
 
         /* Navbar */
-        .navbar {
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
-        }
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 0.8rem 1rem;
+}
 
-        .navbar.scrolled {
-            background-color: #007bff !important;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
+/* Navbar scrolled state */
+.navbar.scrolled {
+    background-color: #007bff !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 
-        .navbar-brand {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            color: #007bff !important;
-            transition: color 0.3s;
-        }
+/* Logo as background image */
+.navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: #007bff !important;
+    transition: color 0.3s;
+    background-image: url("{{ url_for('static', filename='logo34.png') }}");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center;
+    padding-left: 45px; /* Adjust for logo size */
+    height: 60px; /* Adjust height for better visibility */
+    width: auto; /* Maintain aspect ratio */
+}
 
-        .navbar-brand img {
-            height: 40px;
-            margin-right: 10px;
-        }
+/* Logo for the scrolled navbar */
+.navbar.scrolled .navbar-brand {
+    color: #ffffff !important;
+}
 
-        .navbar-brand.scrolled {
-            color: #ffffff !important;
-        }
+/* Logo on smaller screens */
+@media (max-width: 768px) {
+    .navbar-brand {
+        height: 50px; /* Adjust height for smaller screens */
+        padding-left: 30px; /* Adjust padding for smaller screens */
+    }
+}
 
-        .navbar-toggler {
-            border: none;
-            outline: none;
-        }
+/* Navbar toggle button */
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
 
-        .navbar-toggler-icon {
-            width: 30px;
-            height: 3px;
-            background-color: #007bff;
-            position: relative;
-            transition: all 0.3s ease-in-out;
-        }
+.navbar-toggler-icon {
+    width: 30px;
+    height: 3px;
+    background-color: #007bff;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
 
-        .navbar-toggler-icon::before,
-        .navbar-toggler-icon::after {
-            content: '';
-            width: 30px;
-            height: 3px;
-            background-color: #007bff;
-            position: absolute;
-            transition: all 0.3s ease-in-out;
-        }
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    width: 30px;
+    height: 3px;
+    background-color: #007bff;
+    position: absolute;
+    transition: all 0.3s ease-in-out;
+}
 
-        .navbar-toggler-icon::before {
-            top: -10px;
-        }
+.navbar-toggler-icon::before {
+    top: -10px;
+}
 
-        .navbar-toggler-icon::after {
-            top: 10px;
-        }
+.navbar-toggler-icon::after {
+    top: 10px;
+}
 
-        .navbar-toggler.collapsed .navbar-toggler-icon {
-            background-color: transparent;
-        }
+.navbar-toggler.collapsed .navbar-toggler-icon {
+    background-color: transparent;
+}
 
-        .navbar-toggler.collapsed .navbar-toggler-icon::before {
-            transform: rotate(45deg);
-            top: 0;
-        }
+.navbar-toggler.collapsed .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
 
-        .navbar-toggler.collapsed .navbar-toggler-icon::after {
-            transform: rotate(-45deg);
-            top: 0;
-        }
+.navbar-toggler.collapsed .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
 
-        .navbar-nav {
-            margin-left: auto;
-            margin-right: auto;
-        }
+/* Navbar links */
+.navbar-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
 
-        .navbar-nav .nav-link {
-            color: #333 !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s, transform 0.2s;
-        }
+.navbar-nav .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s, transform 0.2s;
+}
 
-        .navbar-nav .nav-link:hover {
-            color: #007bff !important;
-            transform: translateY(-2px);
-        }
+.navbar.scrolled .nav-link {
+    color: #fff !important;
+}
 
-        @media (max-width: 768px) {
-            .navbar-nav {
-                text-align: center;
-            }
+.navbar-nav .nav-link:hover {
+    color: #007bff !important;
+    transform: translateY(-2px);
+}
 
-            .navbar-nav .nav-item {
-                padding-bottom: 10px;
-            }
-        }
+/* Contact Info on the right side of the navbar */
+.contact-info {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #007bff;
+    margin-left: 20px;
+}
 
-        /* Footer */
-        footer {
-            background-color: #343a40;
-            color: #ffffff;
-            padding: 2rem 0;
-            position: relative;
-        }
+/* Ensure the contact info turns white when navbar is scrolled */
+.navbar.scrolled .contact-info {
+    color: #ffffff !important;
+}
 
-        footer .footer-links {
-            margin: 0 0 1rem;
-        }
+/* Adjust the layout for smaller screens */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
 
-        footer .footer-links a {
-            color: #007bff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: 500;
-        }
+    .navbar-nav .nav-item {
+        padding-bottom: 10px;
+    }
 
-        footer .footer-links a:hover {
-            text-decoration: underline;
-        }
+    .contact-info {
+        margin-left: 0;
+        padding-top: 10px;
+    }
+}
 
-        footer .social-icons a {
-            color: #ffffff;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease, color 0.3s;
-        }
-
-        footer .social-icons a:hover {
-            transform: scale(1.1);
-            color: #007bff;
-        }
-
-        footer small {
-            display: block;
-            margin-top: 1rem;
-            font-size: 0.875rem;
-        }
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
-        <a class="navbar-brand" href="{{ url_for('main.home') }}">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="">
-            Kedatrack
-        </a>
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.services') }}">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.about_us') }}">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main.contact') }}">Contact</a>
-                </li>
-                {% if current_user.is_authenticated %}
-                    {% if current_user.has_role('Admin') %}
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">
+                Kedatrack
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.services') }}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.about_us') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.contact') }}">Contact</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.has_role('Admin') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin.dashboard') }}">Admin Console</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('admin.dashboard') }}">Admin Console</a>
+                            <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
                         </li>
                     {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
-                    </li>
-                {% endif %}
-            </ul>
+                </ul>
+                <div class="ms-auto contact-info">Call/ Whatsapp
+                    <i class="fas fa-phone-alt"></i> +254796388662
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -225,7 +231,7 @@
             <div class="row justify-content-between">
                 <div class="col-md-6 footer-links">
                     <a href="{{ url_for('main.privacy_policy') }}">Privacy Policy</a>
-                    <a href="{{ url_for('main.privacy_policy') }}">Terms of Service</a>
+                    <a href="#">Terms of Service</a>
                 </div>
                 <div class="col-md-6 social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -245,13 +251,10 @@
     <script>
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
-            const brand = document.querySelector('.navbar-brand');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-                brand.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
-                brand.classList.remove('scrolled');
             }
         });
     </script>
