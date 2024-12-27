@@ -26,6 +26,10 @@
                     {{ service.more_info }}
                 </p>
                 <a href="{{ url_for('main.services') }}" class="btn btn-primary btn-lg mt-4">Back to Services</a>
+                <a href="{{ url_for('main.request_service', service_id=service.id) }}" class="btn btn-success btn-lg mt-4">
+                    Request This Service
+                </a>
+                
             </div>
         </div>
     </div>

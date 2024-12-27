@@ -17,24 +17,21 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* General Styles */
-body {
-    background-color: #e3f2fd; /* Optional: Set a default background */
-    font-family: 'Montserrat', sans-serif;
-    margin: 0; /* Reset margin for consistency */
-    padding: 0; /* Reset padding for consistency */
-    line-height: 1.6; /* Set a standard line-height for readability */
-}
+        body {
+            background-color: #e3f2fd;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, span, div {
-    font-family: inherit; /* Ensure all text elements inherit the Montserrat font */
-}
-
-        /* Navbar */
+           /* Navbar */
 .navbar {
    background-color: #e3f2fd;
     
@@ -79,104 +76,133 @@ h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, span, div {
     }
 }
 
-/* Navbar toggle button */
-.navbar-toggler {
-    border: none;
-    outline: none;
+        .navbar-toggler {
+            border: none;
+            background: none;
+            outline: none;
+        }
+
+        /* Toggle Button (Hamburger) */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            background-color: #007bff;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled .hamburger span {
+            background-color: #fff;
+        }
+
+        /* Animation on Toggle */
+        .navbar-toggler.collapsed .hamburger span:nth-child(1) {
+            transform: rotate(45deg);
+            transform-origin: center;
+            position: relative;
+            top: 7px;
+        }
+
+        .navbar-toggler.collapsed .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .navbar-toggler.collapsed .hamburger span:nth-child(3) {
+            transform: rotate(-45deg);
+            transform-origin: center;
+            position: relative;
+            top: -7px;
+        }
+
+        /* Navbar Links */
+        /* Navbar links */
+       .navbar-nav {
+             margin-left: auto;
+             display: flex;
+             align-items: center;
 }
 
-.navbar-toggler-icon {
-    width: 30px;
-    height: 3px;
+        .navbar.scrolled .nav-link {
+            color: #fff !important;
+        }
+
+        .nav-link:hover {
+            color: #007bff !important;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #007bff;
+            margin-left: 20px;
+        }
+
+        .navbar.scrolled .contact-info {
+            color: #fff !important;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .contact-info {
+                margin-left: 0;
+                padding-top: 10px;
+            }
+        }
+        footer {
     background-color: #007bff;
-    position: relative;
-    transition: all 0.3s ease-in-out;
+    color: #fff;
+    padding: 20px 0;
 }
 
-.navbar-toggler-icon::before,
-.navbar-toggler-icon::after {
-    content: '';
-    width: 30px;
-    height: 3px;
-    background-color: #007bff;
-    position: absolute;
-    transition: all 0.3s ease-in-out;
+footer .footer-links a {
+    color: #fff;
+    margin-right: 15px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
 
-.navbar-toggler-icon::before {
-    top: -10px;
+footer .footer-links a:hover {
+    color: #ffd700;
 }
 
-.navbar-toggler-icon::after {
-    top: 10px;
+footer .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease-in-out;
 }
 
-.navbar-toggler.collapsed .navbar-toggler-icon {
-    background-color: transparent;
+footer .social-icons a:hover {
+    color: #ffd700;
 }
 
-.navbar-toggler.collapsed .navbar-toggler-icon::before {
-    transform: rotate(45deg);
-    top: 0;
+footer small {
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
 }
-
-.navbar-toggler.collapsed .navbar-toggler-icon::after {
-    transform: rotate(-45deg);
-    top: 0;
-}
-
-/* Navbar links */
-.navbar-nav {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-}
-
-.navbar-nav .nav-link {
-    color: #333 !important;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: color 0.3s, transform 0.2s;
-}
-
-.navbar.scrolled .nav-link {
-    color: #fff !important;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #007bff !important;
-    transform: translateY(-2px);
-}
-
-/* Contact Info on the right side of the navbar */
-.contact-info {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #007bff;
-    margin-left: 20px;
-}
-
-/* Ensure the contact info turns white when navbar is scrolled */
-.navbar.scrolled .contact-info {
-    color: #ffffff !important;
-}
-
-/* Adjust the layout for smaller screens */
 @media (max-width: 768px) {
     .navbar-nav {
-        text-align: center;
-    }
-
-    .navbar-nav .nav-item {
-        padding-bottom: 10px;
-    }
-
-    .contact-info {
-        margin-left: 0;
-        padding-top: 10px;
+        flex-direction: column;
+        align-items: center;
     }
 }
-
     </style>
 </head>
 
@@ -184,11 +210,13 @@ h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, span, div {
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('main.home') }}">
-                Kedatrack
-            </a>
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">Kedatrack</a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -227,12 +255,12 @@ h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, span, div {
     </nav>
 
     <!-- Main Content -->
-    <div class="content">
+    <div class="content mt-5">
         {% block content %}{% endblock %}
     </div>
 
-    <!-- Footer -->
-    <footer>
+     <!-- Footer -->
+     <footer>
         <div class="container text-center">
             <div class="row justify-content-between">
                 <div class="col-md-6 footer-links">

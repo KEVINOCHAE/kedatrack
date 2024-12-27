@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from app.admin.models import  ContactMessage
-from app.main.forms import InquiryForm, ContactForm
+from app.admin.models import  ContactMessage, ServiceRequest
+from app.main.forms import  ContactForm, ServiceRequestForm
 import math
 from functools import wraps
 from app import db
@@ -350,3 +350,30 @@ testimonials_data = [
     },
 ]
 
+@main_bp.route('/request-service/<service_id>', methods=['GET', 'POST'])
+def request_service(service_id):
+    service = services_data.get(service_id)
+    if not service:
+        return redirect(url_for('main.services'))
+
+    form = ServiceRequestForm()
+    if form.validate_on_submit():
+        try:
+            new_request = ServiceRequest(
+                service_id=service_id,
+                service_title=service['title'],
+                name=form.name.data,
+                email=form.email.data,
+                phone=form.phone.data,
+                description=form.description.data,
+                subscribe_to_newsletter=form.subscribe_to_newsletter.data,
+            )
+            db.session.add(new_request)
+            db.session.commit()
+            flash("Your request has been submitted successfully!", "success")
+            return redirect(url_for('main.request_service', service_id=service_id))
+        except Exception as e:
+            flash("An error occurred while submitting your request. Please try again.", "danger")
+            return redirect(url_for('main.request_service', service_id=service_id))
+
+    return render_template('main/request_service.html', service=service, form=form)
