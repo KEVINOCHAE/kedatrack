@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, flash, redirect, url_for, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
@@ -37,6 +37,11 @@ def create_app(config_class=None):
 
     # User loader for login management
     from app.admin.models import User
+
+    @app.route('/sitemap.xml')
+    def sitemap():
+        return send_from_directory(app.static_folder, 'sitemap.xml')
+
 
     @login_manager.user_loader
     def load_user(user_id):
