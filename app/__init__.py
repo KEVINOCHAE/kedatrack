@@ -1,10 +1,10 @@
-from flask import Flask, flash, redirect, url_for, send_from_directory
+from flask import Flask, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 
-db = SQLAlchemy()  # Create single instance
+db = SQLAlchemy()  # Create a single instance
 migrate = Migrate()
 login_manager = LoginManager()
 csrf = CSRFProtect()
@@ -24,7 +24,7 @@ def create_app(config_class=None):
     login_manager.login_message = 'Please log in to access this page.'
     login_manager.login_message_category = 'warning'
 
-    # Blueprints
+    # Register blueprints
     from app.auth.routes import auth_bp
     from app.main.routes import main_bp
     from app.admin.routes import admin_bp
@@ -38,13 +38,22 @@ def create_app(config_class=None):
     # User loader for login management
     from app.admin.models import User
 
-    @app.route('/sitemap.xml')
-    def sitemap():
-        return send_from_directory(app.static_folder, 'sitemap.xml')
-
-
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+    # Error handlers
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 404
+
+    @app.errorhandler(500)
+    def internal_server_error(e):
+        return render_template('500.html'), 500
+
+    # Sitemap route
+    @app.route('/sitemap.xml')
+    def sitemap():
+        return send_from_directory(app.static_folder, 'sitemap.xml')
 
     return app

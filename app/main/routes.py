@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
-from app.admin.models import  ContactMessage, ServiceRequest
-from app.main.forms import  ContactForm, ServiceRequestForm
+from app.admin.models import  ContactMessage, ServiceRequest, NewsletterSubscriber
+from app.main.forms import  ContactForm, ServiceRequestForm, NewsletterForm
 import math
 from functools import wraps
 from app import db
@@ -25,14 +25,46 @@ def login_required_with_message(view):
 # Home Route
 # ---------------------------------------
 
-
-@main_bp.route('/')
+@main_bp.route('/', methods=['GET', 'POST'])
 def home():
+    # Chunk partners data (assuming chunk_partners is defined properly)
     chunked_partners = chunk_partners(partners_data)
+
+    # Create the newsletter form instance
+    form = NewsletterForm()
+
     # Add index to each chunk of partners
     indexed_partners = [(index, chunk) for index, chunk in enumerate(chunked_partners)]
-    return render_template('main/home.html', clients_data=clients_data, partners_data=indexed_partners, testimonials_data =testimonials_data )
 
+    # Process the newsletter subscription form
+    if form.validate_on_submit():
+        email = form.email.data
+
+        # Check if the email is already in the database
+        if NewsletterSubscriber.query.filter_by(email=email).first():
+            flash("You are already subscribed!", 'warning')
+            return redirect(url_for('main.home'))  # Redirect to home page
+
+        # Add new subscriber to the database
+        new_subscriber = NewsletterSubscriber(email=email)
+        try:
+            db.session.add(new_subscriber)
+            db.session.commit()
+            flash("Subscription successful! Welcome to the loop.", 'success')
+        except Exception as e:
+            db.session.rollback()
+            flash("An error occurred while subscribing. Please try again.", 'danger')
+
+        return redirect(url_for('main.home'))  # Redirect to home page
+
+    # Render the home page template with the necessary data
+    return render_template(
+        'main/home.html',
+        clients_data=clients_data,
+        partners_data=indexed_partners,
+        testimonials_data=testimonials_data,
+        form=form
+    )
 
 # ---------------------------------------
 # Error Handling
@@ -72,11 +104,48 @@ def contact():
 def privacy_policy():
     return render_template('main/privacy_policies.html')
 
+# Full team list
+team = [
+    {
+        "name": "KEVIN ODHIAMBO OCHAE",
+        "role": "Founder-Chief Technology Officer (CTO)",
+        "image_url": "static/team/kevin.jpeg",
+        "social_links": {
+            "linkedin": "https://www.linkedin.com/in/kevinodhiambo",
+            "X": "https://X.com/kevinodhiambo",
+            "github": "https://github.com/kevinochae"
+        }
+    },
+    {
+        "name": "DAVID OCHIENG OCHAYE",
+        "role": "Co-Founder - Chief Operating Officer (COO)",
+        "image_url": "static/team/dave.jpeg",
+        "social_links": {
+            "linkedin": "https://www.linkedin.com/in/davidochieng",
+            "X": "https://X.com/davidochieng",
+            "github": "https://github.com/davidochieng"
+        }
+    },
+    {
+        "name": "HENRY AFUYA",
+        "role": "Lead Developer",
+        "image_url": "static/team/henry1.jpeg",
+        "social_links": {
+            "linkedin": "https://www.linkedin.com/in/henryafuya",
+            "X": "https://X.com/jsync35300",
+            "github": "https://github.com/afuyah"
+        }
+    }
+]
 
+
+# About Us route
 @main_bp.route('/about_us')
 def about_us():
-    return render_template('main/about_us.html')
-
+    # Pass only the first three team members to the template
+    about_page_team = team[:3]
+    
+    return render_template('main/about_us.html', team=about_page_team)
 
 # dictionary for services
 services_data = {

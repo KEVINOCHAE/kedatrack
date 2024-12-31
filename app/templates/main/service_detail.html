@@ -18,9 +18,9 @@
             </div>
             <!-- Content Section -->
             <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
-                <h1 class="service-title">{{ service.title }}</h1>
+                <h1 class="service-title text-center">{{ service.title }}</h1>
                 <p class="service-description">
-                    {{ service.detailed_description }}
+                    {{ service.description }}
                 </p>
                 <p class="service-more-info">
                     {{ service.more_info }}
@@ -75,8 +75,8 @@
 }
 
 .service-title {
-    font-weight: 700;
-    font-size: 2.8rem;
+    font-weight: 600;
+    font-size: 1.6rem;
     color: #333;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -120,7 +120,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .service-title {
-        font-size: 2.2rem;
+        font-size: 1.2rem;
     }
 
     .service-description {

@@ -4,10 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kedatrack">
+    <meta name="description" content="Kedatrack is a professional fleet monitoring solution providing cutting-edge services for vehicle tracking, fleet management, and real-time analytics.">
+    <meta name="keywords" content="Kedatrack, Fleet Monitoring, Vehicle Tracking, Fleet Management, Real-Time Analytics, GPS Tracking">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#007bff">
+
+    
+
     <title>{% block title %}Kedatrack | Fleet Monitoring Solution{% endblock %}</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Canonical Link -->
+    <link rel="canonical" href="{{ url_for('main.home', _external=True) }}">
+
     <!-- Favicon -->
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
@@ -16,25 +25,51 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- FontAwesome 6 CDN (including X icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Structured Data (JSON-LD for Organization) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Kedatrack",
+        "url": "{{ url_for('main.home', _external=True) }}",
+        "logo": "{{ url_for('static', filename='logo34.png', _external=True) }}",
+        "description": "Professional fleet monitoring solution offering GPS tracking, fleet management, and real-time analytics.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+254796388662",
+            "contactType": "Customer Service"
+        },
+        "sameAs": [
+            "https://facebook.com/Kedatrack",
+            "https://twitter.com/Kedatrack",
+            "https://linkedin.com/company/Kedatrack",
+            "https://instagram.com/Kedatrack"
+        ]
+    }
+    </script>
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
+   /* General Styles */
+body {
+    background-color: #e3f2fd;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
 
-        /* General Styles */
-        body {
-            background-color: #e3f2fd;
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-           /* Navbar */
+/* Navbar */
 .navbar {
-   background-color: #e3f2fd;
-    
+    background-color: #e3f2fd;
     transition: background-color 0.3s, box-shadow 0.3s;
     padding: 0.8rem 1rem;
 }
@@ -76,93 +111,113 @@
     }
 }
 
-        .navbar-toggler {
-            border: none;
-            background: none;
-            outline: none;
-        }
-
-        /* Toggle Button (Hamburger) */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 25px;
-            height: 20px;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            display: block;
-            height: 3px;
-            background-color: #007bff;
-            border-radius: 2px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .navbar.scrolled .hamburger span {
-            background-color: #fff;
-        }
-
-        /* Animation on Toggle */
-        .navbar-toggler.collapsed .hamburger span:nth-child(1) {
-            transform: rotate(45deg);
-            transform-origin: center;
-            position: relative;
-            top: 7px;
-        }
-
-        .navbar-toggler.collapsed .hamburger span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .navbar-toggler.collapsed .hamburger span:nth-child(3) {
-            transform: rotate(-45deg);
-            transform-origin: center;
-            position: relative;
-            top: -7px;
-        }
-
-        /* Navbar Links */
-        /* Navbar links */
-       .navbar-nav {
-             margin-left: auto;
-             display: flex;
-             align-items: center;
+/* Navbar Toggler */
+.navbar-toggler {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
 }
 
-        .navbar.scrolled .nav-link {
-            color: #fff !important;
-        }
+/* Toggle Button (Hamburger) */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+}
 
-        .nav-link:hover {
-            color: #007bff !important;
-            transform: translateY(-2px);
-        }
+.hamburger span {
+    display: block;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
 
-        /* Contact Info */
-        .contact-info {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #007bff;
-            margin-left: 20px;
-        }
+/* Navbar scrolled state for toggler */
+.navbar.scrolled .hamburger span {
+    background-color: #fff;
+}
 
-        .navbar.scrolled .contact-info {
-            color: #fff !important;
-        }
+/* Reversed Animation on Toggle */
+.navbar-toggler:not(.collapsed) .hamburger span:nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: center;
+    position: relative;
+    top: 7px;
+}
 
-        @media (max-width: 768px) {
-            .navbar-nav {
-                text-align: center;
-            }
+.navbar-toggler:not(.collapsed) .hamburger span:nth-child(2) {
+    opacity: 0;
+}
 
-            .contact-info {
-                margin-left: 0;
-                padding-top: 10px;
-            }
-        }
-        footer {
+.navbar-toggler:not(.collapsed) .hamburger span:nth-child(3) {
+    transform: rotate(-45deg);
+    transform-origin: center;
+    position: relative;
+    top: -7px;
+}
+
+/* Original (Reversed) State */
+.navbar-toggler.collapsed .hamburger span:nth-child(1) {
+    transform: none;
+    position: static;
+}
+
+.navbar-toggler.collapsed .hamburger span:nth-child(2) {
+    opacity: 1;
+}
+
+.navbar-toggler.collapsed .hamburger span:nth-child(3) {
+    transform: none;
+    position: static;
+}
+
+/* Navbar Links */
+.navbar-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.navbar.scrolled .nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+    transform: translateY(-2px);
+}
+
+/* Contact Info */
+.contact-info {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #007bff;
+    margin-left: 20px;
+}
+
+.navbar.scrolled .contact-info {
+    color: #fff !important;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info {
+        margin-left: 0;
+        padding-top: 10px;
+    }
+}
+
+/* Footer Styles */
+footer {
     background-color: #007bff;
     color: #fff;
     padding: 20px 0;
@@ -197,12 +252,7 @@ footer small {
     margin-top: 10px;
     text-align: center;
 }
-@media (max-width: 768px) {
-    .navbar-nav {
-        flex-direction: column;
-        align-items: center;
-    }
-}
+
     </style>
 </head>
 

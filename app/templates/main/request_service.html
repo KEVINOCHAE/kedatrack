@@ -6,22 +6,22 @@
     <div class="spinner"></div>
 </div>
 
-<section class="service-request-page mb-4">
+<section class="service-request-page mb-5">
     <!-- Hero Section -->
     <div class="hero-section d-flex align-items-center">
         <div class="container text-center">
             <h1 class="display-4 text-white fw-bold">Service Request</h1>
-            <p class="text-light mt-3">
+            <p class="text-light mt-2">
                 Let us help you bring your vision to life. Fill out the form, and we'll be in touch shortly.
             </p>
         </div>
     </div>
 
     <!-- Request Form Section -->
-    <div class="container mt-5">
+    <div class="container mt-3">
         <div class="row g-0 shadow rounded overflow-hidden">
             <!-- Left Section -->
-            <div class="col-lg-6 col-md-5 left-section p-5 d-flex flex-column justify-content-center">
+            <div class="col-lg-6 col-md-5 left-section p-5 d-flex flex-column justify-content-center position-relative">
                 <h2 class="text-white mb-4">{{ service.title }}</h2>
                 <p class="text-white mb-4">
                     We are dedicated to delivering top-notch solutions tailored to your needs. Fill out the form to
@@ -29,6 +29,9 @@
                 </p>
                 <img src="{{ url_for('static', filename='services/service1.jpg') }}" 
                      alt="{{ service.title }}" class="img-fluid rounded shadow-lg">
+                <div class="phone-overlay position-absolute text-blue">
+                    <span class="fw-bold">Call/sms: +254796388662</span>
+                </div>
             </div>
 
             <!-- Right Section -->
@@ -123,7 +126,7 @@
 
 /* Hero Section */
 .hero-section {
-    height: 300px;
+    height: 200px;
     background: linear-gradient(135deg, #007bff, #0056b3);
     display: flex;
     align-items: center;
@@ -132,7 +135,7 @@
 }
 
 .hero-section h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -141,12 +144,23 @@
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     border-radius: 15px 0 0 15px;
+    position: relative;
 }
 
 .left-section img {
     max-height: 200px;
     object-fit: cover;
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.phone-overlay {
+    top: 360px;
+    right: 120px;
+    font-size: 1rem;
+    color: #007bff;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 /* Right Section */

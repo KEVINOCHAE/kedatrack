@@ -83,3 +83,15 @@ class ServiceRequest(db.Model):
 
     def __repr__(self):
         return f'<ServiceRequest {self.name}>'
+    
+
+class NewsletterSubscriber(db.Model):
+    __tablename__ = 'newsletter_subscribers'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    
+    def __repr__(self):
+        return f'<Subscriber {self.email}>'
+

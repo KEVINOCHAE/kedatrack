@@ -28,4 +28,6 @@ class ServiceRequestForm(FlaskForm):
     submit = SubmitField('Submit Request')
 
 
-
+class NewsletterForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Subscribe')

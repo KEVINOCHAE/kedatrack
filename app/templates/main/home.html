@@ -742,7 +742,7 @@
 
     .info-text {
         
-        color: #777;
+        color: hwb(0 13% 65%);
         font-size: 1rem;
         line-height: 1.6;
     }
@@ -1014,28 +1014,40 @@
 </script>
 
 
-
-
-
 <!-- Newsletter Subscription Section -->
 <section class="py-5" style="background: linear-gradient(135deg, #343a40, #007bff);">
     <div class="container text-center text-white">
         <h2 class="fw-bold mb-4" style="font-family: 'Poppins', sans-serif;">Stay in the Loop</h2>
         <p class="mb-5" style="font-size: 1.1rem;">Subscribe to our newsletter and never miss an update!</p>
-        <form class="row justify-content-center needs-validation" novalidate>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-{{ messages[0][0] }} mt-4">
+                    {{ messages[0][1] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Flask-WTF Form -->
+        <form method="POST" class="row justify-content-center needs-validation" novalidate>
+            {{ form.hidden_tag() }} <!-- CSRF Token -->
             <div class="col-lg-6 col-md-8 col-sm-10 mb-3">
                 <div class="input-group">
-                    <input type="email" class="form-control rounded-pill px-4" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary px-5 rounded-pill fw-bold">Subscribe</button>
+                    {{ form.email(class="form-control rounded-pill px-4", placeholder="Enter your email address") }}
+                    {{ form.submit(class="btn btn-primary px-5 rounded-pill fw-bold") }}
                 </div>
-                <div class="invalid-feedback text-start">
-                    Please enter a valid email address.
-                </div>
+                {% for error in form.email.errors %}
+                    <div class="invalid-feedback text-start">
+                        {{ error }}
+                    </div>
+                {% endfor %}
             </div>
         </form>
         <p class="mt-4" style="font-size: 0.9rem;">We respect your privacy. Unsubscribe anytime.</p>
     </div>
 </section>
+
 
 <!-- Styles -->
 <style>
