@@ -10,7 +10,7 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'super_secret_key')
     
     # Database configuration
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')  #'postgresql://postgres:kfflprtdRQksQMzEkLSjuAETkxMRpttF@junction.proxy.rlwy.net:10738/railway'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:kfflprtdRQksQMzEkLSjuAETkxMRpttF@junction.proxy.rlwy.net:10738/railway'
     SQLALCHEMY_TRACK_MODIFICATIONS = False  # Disable unnecessary overhead
     
     # Additional configurations (for future enhancements)
