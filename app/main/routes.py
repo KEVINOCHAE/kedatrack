@@ -111,8 +111,8 @@ team = [
         "role": "Founder-Chief Technology Officer (CTO)",
         "image_url": "static/team/kevin.jpeg",
         "social_links": {
-            "linkedin": "https://www.linkedin.com/in/kevinodhiambo",
-            "X": "https://X.com/kevinodhiambo",
+            "linkedin": "https://www.linkedin.com/in/kevin-ochae-909b64190",
+            "X": "https://x.com/KOchae?t=A7j37WOwP20TkL_oUK4skA&s=09",
             "github": "https://github.com/kevinochae"
         }
     },
@@ -121,9 +121,9 @@ team = [
         "role": "Co-Founder - Chief Operating Officer (COO)",
         "image_url": "static/team/dave.jpeg",
         "social_links": {
-            "linkedin": "https://www.linkedin.com/in/davidochieng",
-            "X": "https://X.com/davidochieng",
-            "github": "https://github.com/davidochieng"
+            "linkedin": "#",
+            "X": "#",
+            "github": "#"
         }
     },
     {
@@ -131,8 +131,8 @@ team = [
         "role": "Lead Developer",
         "image_url": "static/team/henry1.jpeg",
         "social_links": {
-            "linkedin": "https://www.linkedin.com/in/henryafuya",
-            "X": "https://X.com/jsync35300",
+            "linkedin": "https://www.linkedin.com/in/henry-bulimo-100024229",
+            "X": "https://x.com/JSync35300?t=I_VT9O-QlDbLJMX71WAoZA&s=09",
             "github": "https://github.com/afuyah"
         }
     }
