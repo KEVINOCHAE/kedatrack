@@ -108,13 +108,5 @@ def view_users():
     users = User.query.all()
     return render_template('admin/view_users.html', users=users)
 
-# Admin dashboard (admin only)
-@auth_bp.route('/admin')
-@login_required
-@roles_required('Admin')
-def admin_dashboard():
-    return render_template('admin/dashboard.html')
-
-
 
 
