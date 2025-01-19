@@ -92,6 +92,9 @@
             font-size: 0.9rem;
             font-weight: bold;
             letter-spacing: 1px;
+            color: #ffffff;
+            background-color: #34495e;
+            margin-bottom: 15px;
         }
 
         /* Sidebar Toggle Button */
@@ -209,21 +212,35 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-heading">Menu</div>
+
+        <!-- Dashboard Section -->
         <a href="#" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+
+        <!-- User Management Section -->
+        <div class="sidebar-heading">User Management</div>
         <a href="#" class="nav-link"><i class="fas fa-users"></i> Users</a>
-        <a href="#" class="nav-link"><i class="fas fa-users"></i> Newsletters</a>
-        <a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> service Requests</a>
+        <a href="#" class="nav-link"><i class="fas fa-user-cog"></i> Roles</a>
+
+        <!-- Content Management Section -->
+        <div class="sidebar-heading">Content Management</div>
+        <a href="#" class="nav-link"><i class="fas fa-newspaper"></i> Newsletters</a>
+
+        <!-- Service Requests Section -->
+        <div class="sidebar-heading">Service Requests</div>
+        <a href="#" class="nav-link"><i class="fas fa-cogs"></i> Requests</a>
+
+        <!-- Logout -->
         <a href="#" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <!-- Main Content -->
     <div class="content mt-5" id="content">
-        
+        <!-- Content goes here -->
     </div>
 
     <footer class="mt-4 text-center">
         <p>&copy; {{ current_year }} Kedatrack. All rights reserved.</p>
-      </footer>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
