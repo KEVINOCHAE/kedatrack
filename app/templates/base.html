@@ -10,9 +10,21 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#007bff">
 
-    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Kedatrack - Professional Fleet Monitoring">
+    <meta property="og:description" content="Experience cutting-edge vehicle tracking, fleet management, and real-time analytics with Kedatrack.">
+    <meta property="og:image" content="{{ url_for('static', filename='logo4.png', _external=True) }}">
+    <meta property="og:url" content="{{ url_for('main.home', _external=True) }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ url_for('static', filename='logo4.png', _external=True) }}">
+    <meta name="twitter:title" content="Kedatrack - Professional Fleet Monitoring">
+    <meta name="twitter:description" content="Experience cutting-edge vehicle tracking, fleet management, and real-time analytics with Kedatrack.">
 
     <title>{% block title %}Kedatrack | Fleet Monitoring Solution{% endblock %}</title>
+
 
     <!-- Canonical Link -->
     <link rel="canonical" href="{{ url_for('main.home', _external=True) }}">
@@ -80,23 +92,22 @@ html {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Logo as background image */
 .navbar-brand {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 700;
     display: flex;
     align-items: center;
-    color: #007bff !important;
-    transition: color 0.3s;
-    background-image: url("{{ url_for('static', filename='logo34.png') }}");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: left center;
-    padding-left: 45px; /* Adjust for logo size */
-    height: 60px; /* Adjust height for better visibility */
-    width: auto; /* Maintain aspect ratio */
 }
+
+.brand-logo {
+    height: 100px; /* Adjust height as needed */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add space if you want text alongside the logo */
+    transition: transform 0.3s;
+}
+
+.brand-logo:hover {
+    transform: scale(1.1); /* Add a hover effect for a more interactive feel */
+}
+
 
 /* Logo for the scrolled navbar */
 .navbar.scrolled .navbar-brand {
@@ -260,7 +271,9 @@ footer small {
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('main.home') }}">Kedatrack</a>
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">
+                <img src="{{ url_for('static', filename='logo34.png') }}" alt="Logo" class="brand-logo">
+            </a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
                     <span></span>
@@ -303,7 +316,7 @@ footer small {
             </div>
         </div>
     </nav>
-
+    
     <!-- Main Content -->
     <div class="content mt-5">
         {% block content %}{% endblock %}

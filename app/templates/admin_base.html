@@ -203,7 +203,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <a class="nav-link" href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
             </ul>
         </div>
@@ -230,7 +230,7 @@
         <a href="#" class="nav-link"><i class="fas fa-cogs"></i> Requests</a>
 
         <!-- Logout -->
-        <a href="#" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="{{ url_for('auth.logout') }}" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 
     <!-- Main Content -->
