@@ -29,14 +29,19 @@ class Role(db.Model):
     __tablename__ = 'roles'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(50), unique=True, nullable=False, index=True)
-    description = db.Column(db.String(255), nullable=True)
+    name = db.Column(db.String(50), unique=True, nullable=False, index=True)  # Role name
+    description = db.Column(db.String(255), nullable=True)  # Optional description for the role
 
-    # Relationship to users
-    users = db.relationship('User', back_populates='role', cascade='all, delete-orphan')
+    # Relationship to Users
+    users = db.relationship('User', back_populates='role', lazy='dynamic')
 
     def __repr__(self):
         return f'<Role {self.name}>'
+
+    @staticmethod
+    def get_by_name(name):
+        """Fetch a role by name."""
+        return Role.query.filter_by(name=name).first()
 
 
 class User(UserMixin, db.Model):
@@ -52,9 +57,10 @@ class User(UserMixin, db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # Relationship to role
+    # Relationship to Role
     role = db.relationship('Role', back_populates='users')
 
+    # Methods
     def set_password(self, password):
         """Generate a hashed password."""
         self.password_hash = generate_password_hash(password)
@@ -65,10 +71,20 @@ class User(UserMixin, db.Model):
 
     def has_role(self, role_name):
         """Check if the user has a specific role."""
-        return self.role.name == role_name
+        return self.role and self.role.name == role_name
 
     def __repr__(self):
         return f'<User {self.username}>'
+
+    @staticmethod
+    def get_by_email(email):
+        """Fetch a user by email."""
+        return User.query.filter_by(email=email).first()
+
+    @staticmethod
+    def get_by_username(username):
+        """Fetch a user by username."""
+        return User.query.filter_by(username=username).first()
 
 
 class ServiceRequest(db.Model):
