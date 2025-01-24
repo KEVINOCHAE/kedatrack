@@ -1,12 +1,10 @@
-from flask import render_template, redirect, url_for, flash, request,Blueprint 
+from flask import render_template, redirect, url_for, flash, request, Blueprint
 from flask_login import login_user, logout_user, login_required, current_user
 from app import db
 from app.admin.models import User, Role
-from .forms import LoginForm, AdminUserForm,RegisterForm
-
+from .forms import LoginForm, AdminUserForm, RegisterForm
 from werkzeug.security import generate_password_hash
 from functools import wraps
-
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -16,13 +14,14 @@ def roles_required(*roles):
         @wraps(func)
         def decorated_view(*args, **kwargs):
             if not current_user.is_authenticated:
-                return redirect(url_for('main.login'))
-            if not current_user.role.name in roles:
+                return redirect(url_for('auth.login'))  # Redirect to login if not authenticated
+            if current_user.role.name not in roles:
                 flash('You do not have the required permissions to access this page.', 'danger')
-                return redirect(url_for('main.home'))
-            return func(*args **kwargs)
+                return redirect(url_for('main.home'))  # Redirect to home if insufficient permissions
+            return func(*args, **kwargs)
         return decorated_view
     return wrapper
+
 
 # Home route
 @auth_bp.route('/')
@@ -30,23 +29,27 @@ def home():
     return render_template('home.html')
 
 
+# Register route
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
     
     if form.validate_on_submit():
-        # Get the default role for a new user
-        default_role = Role.query.filter_by(name='User').first()  # Assuming 'User' is the default role
+        # Get the default role for new users
+        DEFAULT_ROLE_NAME = 'User'  # Default role name
+        default_role = Role.query.filter_by(name=DEFAULT_ROLE_NAME).first()
         
-        if default_role is None:
+        if not default_role:
             flash('Default role does not exist. Please contact the admin.', 'danger')
             return redirect(url_for('auth.register'))
         
-        user = User(username=form.username.data,
-                    email=form.email.data,
-                    password_hash=generate_password_hash(form.password.data),
-                    role_id=default_role.id)  # Assign the default role
-        
+        # Create a new user
+        user = User(
+            username=form.username.data,
+            email=form.email.data,
+            password_hash=generate_password_hash(form.password.data),
+            role_id=default_role.id  # Assign the default role
+        )
         db.session.add(user)
         db.session.commit()
         
@@ -65,15 +68,16 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user and user.check_password(form.password.data):
+        if user and user.check_password(form.password.data):  # Assuming check_password method exists
             login_user(user)
             flash('Logged in successfully!', 'success')
-            next_page = request.args.get('next')
+            next_page = request.args.get('next')  # Handle redirects after login
             return redirect(next_page) if next_page else redirect(url_for('main.home'))
         else:
             flash('Invalid email or password', 'danger')
     
     return render_template('auth/login.html', form=form)
+
 
 # Logout route
 @auth_bp.route('/logout')
@@ -83,16 +87,22 @@ def logout():
     flash('You have been logged out.', 'success')
     return redirect(url_for('main.home'))
 
+
 # Admin: Add a new user route (only admins can access)
 @auth_bp.route('/admin/add_user', methods=['GET', 'POST'])
 @login_required
-@roles_required('Admin')  # Only accessible by Admins
+@roles_required('Admin')  # Restrict access to Admins
 def add_user():
     form = AdminUserForm()
     form.set_role_choices()  # Populate roles dynamically
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data)
-        new_user = User(username=form.username.data, email=form.email.data, password_hash=hashed_password, role_id=form.role.data)
+        new_user = User(
+            username=form.username.data,
+            email=form.email.data,
+            password_hash=hashed_password,
+            role_id=form.role.data
+        )
         db.session.add(new_user)
         db.session.commit()
         flash('New user added successfully!', 'success')
@@ -100,13 +110,11 @@ def add_user():
     
     return render_template('admin/add_user.html', form=form)
 
+
 # Admin: View all users (Admin only)
 @auth_bp.route('/admin/users')
 @login_required
-@roles_required('Admin')
+@roles_required('Admin')  # Restrict access to Admins
 def view_users():
     users = User.query.all()
     return render_template('admin/view_users.html', users=users)
-
-
-
