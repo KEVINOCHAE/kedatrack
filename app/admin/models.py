@@ -95,3 +95,14 @@ class NewsletterSubscriber(db.Model):
     def __repr__(self):
         return f'<Subscriber {self.email}>'
 
+
+class EmailLog(db.Model):
+    __tablename__ = 'email_logs'
+    id = db.Column(db.Integer, primary_key=True)
+    subject = db.Column(db.String(255), nullable=False)
+    body = db.Column(db.Text, nullable=False)
+    recipients = db.Column(db.Text, nullable=False)  # Comma-separated list of email addresses
+    sent_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<EmailLog {self.subject} sent to {self.recipients}>"
