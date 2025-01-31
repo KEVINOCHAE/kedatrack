@@ -8,16 +8,7 @@ from functools import wraps
 
 admin_bp = Blueprint('admin', __name__)
 
-# Admin authorization
-def admin_required(func):
-    @wraps(func)
-    @login_required
-    def wrapper(*args, **kwargs):
-        if not current_user.has_role("Admin"):
-            flash("Access denied. Admins only.", "danger")
-            return redirect(url_for("auth.login"))
-        return func(*args, **kwargs)
-    return wrapper
+
 
 @admin_bp.route('/admin/dashboard', methods=['GET'])
 def dashboard():
@@ -25,14 +16,14 @@ def dashboard():
     return render_template('admin/dashboard.html')
     
 @admin_bp.route('/admin/users', methods=['GET'])
-@admin_required
+@login_required
 def users_page():
     """Fetch all users and display them in a DataTable."""
     users = User.query.all()
     return render_template('admin/users.html', users=users)
 
 @admin_bp.route('/admin/user/<int:user_id>/delete', methods=['POST'])
-@admin_required
+@login_required
 def delete_user(user_id):
     """Delete a user."""
     user = User.query.get_or_404(user_id)
@@ -42,7 +33,7 @@ def delete_user(user_id):
     return redirect(url_for('admin.users_page'))
 
 @admin_bp.route('/admin/user/<int:user_id>/email', methods=['GET', 'POST'])
-@admin_required
+@login_required
 def email_user(user_id):
     """Email an individual user."""
     user = User.query.get_or_404(user_id)
@@ -66,7 +57,7 @@ def email_user(user_id):
     return render_template('admin/email_user.html', user=user)
 
 @admin_bp.route('/admin/users/email', methods=['POST'])
-@admin_required
+@login_required
 def email_multiple_users():
     """Send email to selected or all users."""
     user_ids = request.form.getlist('user_ids')  # IDs of selected users
@@ -91,14 +82,14 @@ def email_multiple_users():
 
 
 @admin_bp.route('/admin/newsletter', methods=['GET'])
-@admin_required
+@login_required
 def newsletter_page():
     """Show newsletter overview with recent messages."""
     recent_emails = EmailLog.query.order_by(EmailLog.sent_at.desc()).limit(5).all()
     return render_template('admin/newsletter.html', recent_emails=recent_emails)
 
 @admin_bp.route('/admin/newsletter/messages', methods=['GET'])
-@admin_required
+@login_required
 def all_messages():
     """Paginated view of all email logs."""
     page = request.args.get('page', 1, type=int)
