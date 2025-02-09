@@ -222,7 +222,7 @@ services_data = {
         'description': (
             'Video telematics combines sensors and AI-powered dashcams to enhance driver safety and fleet management.'
         ),
-        'image_url': 'services/video_telematics.jpeg',
+        'image_url': 'services/dashcam.png',
         'detailed_description': 'Detailed information about video telematics solutions...',
         'more_info': (
             'Key functions include:\n'
