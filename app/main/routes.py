@@ -107,7 +107,7 @@ def privacy_policy():
 # Full team list
 team = [
     {
-        "name": "KEVIN ODHIAMBO OCHAE",
+        "name": "KEVIN OCHAE",
         "role": "Founder-Chief Technology Officer (CTO)",
         "image_url": "static/team/kevin.jpeg",
         "social_links": {
@@ -117,7 +117,7 @@ team = [
         }
     },
     {
-        "name": "DAVID OCHIENG OCHAYE",
+        "name": "DAVID OCHAYE",
         "role": "Co-Founder - Chief Operating Officer (COO)",
         "image_url": "static/team/dave.jpeg",
         "social_links": {
