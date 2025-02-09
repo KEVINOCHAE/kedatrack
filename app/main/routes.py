@@ -161,15 +161,15 @@ services_data = {
         'more_info': (
             'The solution comprises a device-agnostic platform that integrates tracking devices and sensors from all major '
             'manufacturers in the world.\n\n'
-            '### Salient features of Kedatrack GPS:\n'
-            '- **Real-Time Tracking & History Playback**:\n'
+            'Salient features of Kedatrack GPS:\n'
+            '  - Real-Time Tracking & History Playback:\n'
             '  - Standard reports\n'
             '  - Geozone customization\n\n'
-            '- **Last Mile Delivery Management System**:\n'
+            '  -Last Mile Delivery Management System:\n'
             '  - Order dispatch automation & monitoring\n'
             '  - Route management\n'
             '  - Fleet maintenance\n\n'
-            '- **Additional Features**:\n'
+            '  - Additional Features:\n'
             '  - 24/7 live vehicle tracking\n'
             '  - Instant notifications/alarms via email, SMS, or app notifications\n'
             '  - Data analysis and flexible custom reporting\n'
@@ -207,7 +207,7 @@ services_data = {
             'This Temperature & Humidity Management System provides real-time monitoring for cold-chain vehicles, '
             'cold rooms, and other sensitive environments.'
         ),
-        'image_url': 'services/refridgeration.jpeg',
+        'image_url': 'services/Tempmonitoringvehicle.jpeg',
         'detailed_description': 'Detailed information about temperature monitoring systems...',
         'more_info': (
             '- Real-time temperature and humidity monitoring\n'
