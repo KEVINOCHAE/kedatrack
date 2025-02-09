@@ -207,7 +207,7 @@ services_data = {
             'This Temperature & Humidity Management System provides real-time monitoring for cold-chain vehicles, '
             'cold rooms, and other sensitive environments.'
         ),
-        'image_url': 'services/temp_monitoring.jpeg',
+        'image_url': 'services/refridgeration.jpeg',
         'detailed_description': 'Detailed information about temperature monitoring systems...',
         'more_info': (
             '- Real-time temperature and humidity monitoring\n'
