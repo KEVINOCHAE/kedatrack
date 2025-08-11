@@ -1,0 +1,140 @@
+{% extends "admin_base.html" %}
+{% block content %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .table-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .bulk-actions {
+            margin-bottom: 20px;
+        }
+        .btn-bulk-action {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .page-title {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+
+<div class="container">
+    <h1 class="page-title text-center">Manage Users</h1>
+
+    <!-- Bulk Actions -->
+    <div class="bulk-actions d-flex justify-content-between">
+        <div>
+            <button id="select-all" class="btn btn-primary btn-sm btn-bulk-action">Select All</button>
+            <button id="deselect-all" class="btn btn-secondary btn-sm btn-bulk-action">Deselect All</button>
+        </div>
+        <button id="email-selected" class="btn btn-success btn-sm">
+            <i class="fas fa-envelope"></i> Email Selected Users
+        </button>
+    </div>
+
+    <!-- Users Table -->
+    <table id="users-table" class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    <input type="checkbox" id="select-all-checkbox">
+                </th>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>
+                    <input type="checkbox" class="user-checkbox" value="{{ user.id }}">
+                </td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role.name }}</td>
+                <td class="table-actions">
+                    <!-- Email Button -->
+                    <a href="{{ url_for('admin.email_user', user_id=user.id) }}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <!-- Edit Button -->
+                    <a href="#" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <!-- Delete Button -->
+                    <form action="{{ url_for('admin.delete_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialize DataTable
+        $('#users-table').DataTable({
+            pageLength: 10,
+            lengthChange: false,
+            searching: true,
+            columnDefs: [
+                { orderable: false, targets: [0, 5] } // Disable sorting on checkboxes and action buttons
+            ]
+        });
+
+        // Handle Select All
+        $('#select-all').click(function() {
+            $('.user-checkbox').prop('checked', true);
+        });
+
+        // Handle Deselect All
+        $('#deselect-all').click(function() {
+            $('.user-checkbox').prop('checked', false);
+        });
+
+        // Handle Email Selected Users
+        $('#email-selected').click(function() {
+            const selectedUserIds = $('.user-checkbox:checked').map(function() {
+                return $(this).val();
+            }).get();
+
+            if (selectedUserIds.length === 0) {
+                alert('Please select at least one user.');
+                return;
+            }
+
+            const emailUrl = "{{ url_for('admin.email_multiple_users') }}";
+            const emailForm = `
+                <form id="bulk-email-form" method="POST" action="${emailUrl}">
+                    <input type="hidden" name="user_ids" value="${selectedUserIds.join(',')}">
+                </form>
+            `;
+            $('body').append(emailForm);
+            $('#bulk-email-form').submit();
+        });
+    });
+</script>
+
+{% endblock %}

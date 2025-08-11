@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us - Kedatrack{% endblock %}
+
+{% block content %}
+<!-- Page Loader -->
+<div id="loader" class="page-loader">
+    <div class="spinner"></div>
+</div>
+
+<div class="container-fluid mt-5 py-5 contact-page">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-dark font-weight-bold">Get in Touch</h1>
+        <p class="lead text-muted">We’re here to help. Let us know how we can assist you.</p>
+    </div>
+
+    <div class="row">
+        <!-- Left Column: Contact Info -->
+        <div class="col-lg-5 col-md-6 mb-4">
+            <div class="contact-info p-4 rounded-lg shadow">
+                <h3 class="mb-4 text-dark text-center"><i class="fas fa-phone-alt"></i> Contact Information</h3>
+                <ul class="list-unstyled">
+                    <li class="mb-4">
+                        <h5><i class="fas fa-map-marker-alt"></i> Address</h5>
+                        <p>Six Eighty Hotel Building, Muindi Mbingu St, Nairobi CBD, P.O. Box 273 – 00100, Nairobi, Kenya</p>
+                    </li>
+                    <li class="mb-4">
+                        <h5><i class="fas fa-phone-alt"></i> Phone</h5>
+                        <p><a href="tel:+254796388662">+254 796 388 662</a><br>
+                           <a href="tel:+254733522358">+254 733 522 358</a></p>
+                    </li>
+                    <li class="mb-4">
+                        <h5><i class="fas fa-envelope"></i> Email</h5>
+                        <p><a href="mailto:info.kedatracklimited@gmail.com">info.kedatracklimited@gmail.com</a></p>
+                    </li>
+                    <li>
+                        <h5><i class="fas fa-globe"></i> Website</h5>
+                        <p><a href="https://www.kedatracklimited.com" target="_blank">www.kedatracklimited.com</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Column: Contact Form -->
+        <div class="col-lg-7 col-md-6">
+            <div class="contact-form p-4 rounded-lg shadow">
+                <h3 class="text-dark text-center mb-4"><i class="fas fa-envelope"></i> Send Us a Message</h3>
+                <form method="POST" action="{{ url_for('main.contact') }}">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.name.label(class="form-label text-dark") }}
+                        {{ form.name(class="form-control", placeholder="Your Full Name") }}
+                        {% for error in form.name.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label(class="form-label text-dark") }}
+                        {{ form.email(class="form-control", placeholder="Your Email") }}
+                        {% for error in form.email.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.subject.label(class="form-label text-dark") }}
+                        {{ form.subject(class="form-control", placeholder="Subject") }}
+                        {% for error in form.subject.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.message.label(class="form-label text-dark") }}
+                        {{ form.message(class="form-control", placeholder="Your Message", rows="5") }}
+                        {% for error in form.message.errors %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="text-center">
+                        {{ form.submit(class="btn btn-dark btn-block btn-lg") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Map Section -->
+    <div class="mt-5">
+        <h3 class="text-center mb-3 text-dark"><i class="fas fa-map-marked-alt"></i> Visit Us</h3>
+        <div class="map-container rounded-lg overflow-hidden" style="height: 400px;">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31710.54606316498!2d36.8188125!3d-1.286389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18383562f4b4d97f%3A0x2c6f19a322e03e30!2sSix%20Eighty%20Hotel%2C%20Muindi%20Mbingu%20St%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1678375552444!5m2!1sen!2ske"
+                style="width: 100%; height: 100%; border: 0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Page Loader */
+    .page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 1;
+        transition: opacity 1s ease-out;
+    }
+
+    .spinner {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #007bff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+   
+    .contact-info ul li h5, .contact-form .form-label {
+        font-weight: bold;
+    }
+
+    /* Map */
+    .map-container iframe {
+        border-radius: 8px;
+    }
+</style>
+
+<script>
+    window.addEventListener('load', function () {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 1000);
+    });
+</script>
+{% endblock %}

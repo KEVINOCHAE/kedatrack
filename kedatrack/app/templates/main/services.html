@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Page Loader -->
+<div id="loader" class="page-loader">
+    <div class="spinner"></div>
+</div>
+
+<!-- Services Page -->
+<section class="services-page ">
+    <div class="container mt-5">
+        <!-- Introduction Section -->
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-8">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-description">
+                    At Kedatrack Limited, we provide cutting-edge IT solutions to help businesses optimize their operations, improve security, and achieve growth. Our expertise spans fleet management, security systems, and advanced software development.
+                </p>
+            </div>
+        </div>
+
+        <!-- Service Cards Section -->
+        <div class="row gy-4">
+            {% for key, service in services.items() %}
+            <div class="col-md-6 col-lg-4">
+                <div class="service-card" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="image-container">
+                        <img src="{{ url_for('static', filename=service.image_url) }}" alt="{{ service.title }}" class="img-fluid">
+                    </div>
+                    <div class="service-info">
+                        <h4 class="service-title">{{ service.title }}</h4>
+                        <p class="service-description">{{ service.description }}</p>
+                        <a href="/service-details/{{ service.id }}" class="btn btn-primary btn-block">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<style>
+
+/* Page Loader */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Services Page */
+.services-page {
+   
+    padding: 80px 0;
+   
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-description {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Service Cards */
+.service-card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 66.6%; /* Maintain aspect ratio */
+    overflow: hidden;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images scale without distortion */
+}
+
+.service-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.service-title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.service-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-card {
+        margin-bottom: 20px;
+    }
+}
+</style>
+
+<script>
+    // Hide the loader after the page is fully loaded
+    window.addEventListener('load', function () {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+    });
+
+    // Initialize AOS (Animate On Scroll)
+    document.addEventListener('DOMContentLoaded', function () {
+        AOS.init();
+    });
+</script>
+
+<!-- Include AOS Animation Stylesheet -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+{% endblock %}

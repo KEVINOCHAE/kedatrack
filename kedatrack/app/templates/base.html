@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Kedatrack">
+    <meta name="description" content="Kedatrack is a professional fleet monitoring solution providing cutting-edge services for vehicle tracking, fleet management, and real-time analytics.">
+    <meta name="keywords" content="Kedatrack, Fleet Monitoring, Vehicle Tracking, Fleet Management, Real-Time Analytics, GPS Tracking">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#007bff">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Kedatrack - Professional Fleet Monitoring">
+    <meta property="og:description" content="Experience cutting-edge vehicle tracking, fleet management, and real-time analytics with Kedatrack.">
+    <meta property="og:image" content="{{ url_for('static', filename='logo34.png', _external=True) }}">
+    <meta property="og:url" content="{{ url_for('main.home', _external=True) }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ url_for('static', filename='logo34.png', _external=True) }}">
+    <meta name="twitter:title" content="Kedatrack - Professional Fleet Monitoring">
+    <meta name="twitter:description" content="Experience cutting-edge vehicle tracking, fleet management, and real-time analytics with Kedatrack.">
+
+    <title>{% block title %}Kedatrack | Fleet Monitoring Solution{% endblock %}</title>
+
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="{{ url_for('main.home', _external=True) }}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@500;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- FontAwesome 6 CDN (including X icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Structured Data (JSON-LD for Organization) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Kedatrack",
+        "url": "{{ url_for('main.home', _external=True) }}",
+        "logo": "{{ url_for('static', filename='logo34.png', _external=True) }}",
+        "description": "Professional fleet monitoring solution offering GPS tracking, fleet management, and real-time analytics.",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+254796388662",
+            "contactType": "Customer Service"
+        },
+        "sameAs": [
+            "https://facebook.com/Kedatrack",
+            "https://twitter.com/Kedatrack",
+            "https://linkedin.com/company/Kedatrack",
+            "https://instagram.com/Kedatrack"
+        ]
+    }
+    </script>
+    <style>
+   /* General Styles */
+body {
+    background-color: #e3f2fd;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #e3f2fd;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 0.2rem 1rem;
+}
+
+/* Navbar scrolled state */
+.navbar.scrolled {
+    background-color: #007bff !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 80px; /* Adjust height as needed */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add space if you want text alongside the logo */
+    transition: transform 0.3s;
+}
+
+.brand-logo:hover {
+    transform: scale(1.1); /* Add a hover effect for a more interactive feel */
+}
+
+
+/* Logo for the scrolled navbar */
+.navbar.scrolled .navbar-brand {
+    color: #ffffff !important;
+}
+
+/* Logo on smaller screens */
+@media (max-width: 768px) {
+    .brand-logo {
+        height: 50px; /* Adjust height for smaller screens */
+        padding-left: 30px; /* Adjust padding for smaller screens */
+    }
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+}
+
+/* Toggle Button (Hamburger) */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Navbar scrolled state for toggler */
+.navbar.scrolled .hamburger span {
+    background-color: #fff;
+}
+
+/* Reversed Animation on Toggle */
+.navbar-toggler:not(.collapsed) .hamburger span:nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: center;
+    position: relative;
+    top: 7px;
+}
+
+.navbar-toggler:not(.collapsed) .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggler:not(.collapsed) .hamburger span:nth-child(3) {
+    transform: rotate(-45deg);
+    transform-origin: center;
+    position: relative;
+    top: -7px;
+}
+
+/* Original (Reversed) State */
+.navbar-toggler.collapsed .hamburger span:nth-child(1) {
+    transform: none;
+    position: static;
+}
+
+.navbar-toggler.collapsed .hamburger span:nth-child(2) {
+    opacity: 1;
+}
+
+.navbar-toggler.collapsed .hamburger span:nth-child(3) {
+    transform: none;
+    position: static;
+}
+
+/* Navbar Links */
+.navbar-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.navbar.scrolled .nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+    transform: translateY(-2px);
+}
+
+/* Contact Info */
+.contact-info {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #007bff;
+    margin-left: 20px;
+}
+
+.navbar.scrolled .contact-info {
+    color: #fff !important;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info {
+        margin-left: 0;
+        padding-top: 10px;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+}
+
+footer .footer-links a {
+    color: #fff;
+    margin-right: 15px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .footer-links a:hover {
+    color: #ffd700;
+}
+
+footer .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease-in-out;
+}
+
+footer .social-icons a:hover {
+    color: #ffd700;
+}
+
+footer small {
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}">
+                <img src="{{ url_for('static', filename='logo34.png') }}" alt="Logo" class="brand-logo">
+            </a>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.services') }}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.about_us') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.contact') }}">Contact</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                        {% if current_user.has_role('Admin') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('admin.dashboard') }}">Admin Console</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <div class="ms-auto contact-info">Call/ Whatsapp
+                    <i class="fas fa-phone-alt"></i> +254796388662
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="content mt-5">
+        {% block content %}{% endblock %}
+    </div>
+
+     <!-- Footer -->
+     <footer>
+        <div class="container text-center">
+            <div class="row justify-content-between">
+                <div class="col-md-6 footer-links">
+                    <a href="{{ url_for('main.privacy_policy') }}">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <div class="col-md-6 social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <small>&copy; 2024 Kedatrack. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Navbar Scroll Animation -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

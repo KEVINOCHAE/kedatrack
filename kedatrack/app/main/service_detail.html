@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Service Detail Page -->
+<section class="service-detail py-5">
+    <div class="container">
+        <!-- Service Information -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="service-image" style="background-image: url('{{ service.image_url }}');"></div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="service-title">{{ service.title }}</h2>
+                <p class="service-description">{{ service.detailed_description }}</p>
+                <p>{{ service.more_info }}</p>
+                <a href="{{ url_for('main.services') }}" class="btn btn-secondary btn-lg">Back to Services</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .service-detail .service-image {
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+        border-radius: 10px;
+    }
+
+    .service-detail .service-title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .service-detail .service-description {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 20px;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Kedatrack{% endblock %}
+
+{% block content %}
+<!-- Page Loader -->
+<div id="page-loader">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<!-- Register Section -->
+<div class="container register-section mt-5" data-aos="fade-in">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Create Your Account</h2>
+                    <form method="POST" action="{{ url_for('auth.register') }}">
+                        {{ form.hidden_tag() }}
+                        
+                        <!-- Username Field -->
+                        <div class="form-group mb-4">
+                            {{ form.username.label(class="form-label") }}
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                {{ form.username(class="form-control", placeholder="Enter your username") }}
+                            </div>
+                            {% if form.username.errors %}
+                                <div class="text-danger mt-1">{{ form.username.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group mb-4">
+                            {{ form.email.label(class="form-label") }}
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                {{ form.email(class="form-control", placeholder="Enter your email address") }}
+                            </div>
+                            {% if form.email.errors %}
+                                <div class="text-danger mt-1">{{ form.email.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Password Field -->
+                        <div class="form-group mb-4">
+                            {{ form.password.label(class="form-label") }}
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                {{ form.password(class="form-control", placeholder="Create a password") }}
+                            </div>
+                            {% if form.password.errors %}
+                                <div class="text-danger mt-1">{{ form.password.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Confirm Password Field -->
+                        <div class="form-group mb-4">
+                            {{ form.confirm_password.label(class="form-label") }}
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                {{ form.confirm_password(class="form-control", placeholder="Confirm your password") }}
+                            </div>
+                            {% if form.confirm_password.errors %}
+                                <div class="text-danger mt-1">{{ form.confirm_password.errors[0] }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-tech btn-lg btn-block") }}
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="{{ url_for('auth.login') }}" class="text-primary">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+    /* Page Loader */
+    #page-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #page-loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Register Section */
+    .register-section {
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Input Wrapper */
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        color: #007bff;
+        font-size: 18px;
+    }
+
+    .form-control {
+        padding-left: 40px;
+        border-radius: 8px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .form-label {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    /* Buttons */
+    .btn-tech {
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: #fff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-tech:hover {
+        transform: translateY(-3px);
+        box-shadow: 0px 10px 15px rgba(0, 123, 255, 0.3);
+    }
+
+    /* Animations */
+    [data-aos="fade-in"] {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease-out;
+    }
+
+    [data-aos="fade-in"].aos-animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+
+<!-- Scripts -->
+<script>
+    // Page Loader
+    window.addEventListener('load', function () {
+        document.getElementById('page-loader').classList.add('hidden');
+    });
+
+    // AOS Animation
+    document.addEventListener('DOMContentLoaded', function () {
+        const elements = document.querySelectorAll('[data-aos="fade-in"]');
+        elements.forEach(el => {
+            el.classList.add('aos-animate');
+        });
+    });
+</script>
+{% endblock %}

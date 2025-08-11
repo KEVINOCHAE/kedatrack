@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Page Loader -->
+<div id="loader" class="page-loader">
+    <div class="spinner"></div>
+</div>
+
+<!-- Service Detail Page -->
+<section class="service-detail py-5">
+    <div class="container mt-5">
+        <div class="row align-items-center">
+            <!-- Image Section -->
+            <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right" data-aos-duration="1000">
+                <div class="service-image-container">
+                    <img src="{{ url_for('static', filename=service.image_url) }}" alt="{{ service.title }}" class="img-fluid rounded">
+                </div>
+            </div>
+            <!-- Content Section -->
+            <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                <h1 class="service-title text-center">{{ service.title }}</h1>
+                <p class="service-description">
+                    {{ service.description }}
+                </p>
+                <p class="service-more-info">
+                    {{ service.more_info }}
+                </p>
+                <a href="{{ url_for('main.services') }}" class="btn btn-primary btn-lg mt-4">Back </a>
+                <a href="{{ url_for('main.request_service', service_id=service.id) }}" class="btn btn-success btn-lg mt-4">
+                    Request Service
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Page Loader */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Service Detail Page */
+.service-detail {
+  
+    padding-top: 80px;
+    padding-bottom: 80px;
+    
+}
+
+.service-title {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.service-description {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.service-more-info {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.service-image-container img {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.service-image-container img:hover {
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-title {
+        font-size: 1.2rem;
+    }
+
+    .service-description {
+        font-size: 1.1rem;
+    }
+}
+</style>
+
+<script>
+    // Hide the loader after the page is fully loaded
+    window.addEventListener('load', function () {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+    });
+
+    // Initialize AOS (Animate On Scroll)
+    document.addEventListener('DOMContentLoaded', function () {
+        AOS.init();
+    });
+</script>
+
+<!-- Include AOS Animation Stylesheet -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+{% endblock %}
