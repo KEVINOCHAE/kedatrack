@@ -4,6 +4,12 @@ services_bp = Blueprint('services', __name__, url_prefix='/api/services')
 
 # Dictionary holding the services data
 services_data = {
+'software_development': {
+        'id': 'software_development',
+        'title': 'Software Development',
+        'description': 'Custom software solutions tailored to your business needs, from web development to mobile apps.',
+        'image_url': 'https://via.placeholder.com/400x300',
+    },
     'fleet_management': {
         'id': 'fleet_management',
         'title': 'Fleet Management Solutions',
@@ -16,16 +22,10 @@ services_data = {
         'description': 'CCTV cameras, access control, and video surveillance solutions to enhance your security infrastructure.',
         'image_url': 'https://via.placeholder.com/400x300',
     },
-    'software_development': {
-        'id': 'software_development',
-        'title': 'Software Development',
-        'description': 'Custom software solutions tailored to your business needs, from web development to mobile apps.',
-        'image_url': 'https://via.placeholder.com/400x300',
-    },
     'it_support': {
         'id': 'it_support',
         'title': 'IT Support and Consultation',
-        'description': 'Comprehensive IT support services for businesses to improve efficiency and manage their technological infrastructure.',
+        'description': 'Seamless IT support services for businesses to improve efficiency and manage their technological infrastructure.',
         'image_url': 'https://via.placeholder.com/400x300',
     },
     'cloud_services': {

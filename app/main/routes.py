@@ -149,6 +149,28 @@ def about_us():
 
 # dictionary for services
 services_data = {
+'software_development': {
+        'id': 'software_development',
+        'title': 'Software Development',
+        'description': (
+            'Custom software solutions tailored to your business needs, from web development to mobile apps.'
+        ),
+        'image_url': 'services/sotware_dev.jpg',
+        'detailed_description': 'Detailed information about software development...',
+        'more_info': 'Our expert developers create innovative software to solve your unique business challenges.'
+    },
+    'it_support': {
+        'id': 'it_support',
+        'title': 'IT Systems (APIs) Integration & Support',
+        'description': (
+            'Comprehensive IT Systems Integration and support services to improve operational efficiency and seamlessly manage technological infrastructure.'
+        ),
+        'image_url': 'services/it_support.avif',
+        'detailed_description': 'Detailed information about IT support...',
+        'more_info': (
+            'We seamlessly connect your business applications, platforms, and devices for smarter, faster, and more efficient operations. Our API integration services enable your systems to communicate effortlessly, ensuring real-time data exchange, automation, and improved workflows. We design, implement, and maintain integrations between ERP systems, payment gateways, IoT platforms, fleet management solutions, and other enterprise tools — tailored to your unique business needs. Whether you need one-time integration or ongoing technical support, Kedatrack Limited provides reliable expertise to keep your systems connected, secure, and running smoothly.'
+        )
+    },
     'fleet_management': {
         'id': 'fleet_management',
         'title': 'Advanced Fleet Management/Assets Tracking Solutions',
@@ -246,40 +268,6 @@ services_data = {
             '- Comprehensive repair and security infrastructure solutions'
         )
     },
-    'software_development': {
-        'id': 'software_development',
-        'title': 'Software Development',
-        'description': (
-            'Custom software solutions tailored to your business needs, from web development to mobile apps.'
-        ),
-        'image_url': 'services/sotware_dev.jpg',
-        'detailed_description': 'Detailed information about software development...',
-        'more_info': 'Our expert developers create innovative software to solve your unique business challenges.'
-    },
-    'aerial_and_satellite_installation_solutions': {
-        'id': 'aerial_and_satellite_installation_solutions',
-        'title': 'Aerial & Satellite Installation Solutions',
-        'description': 'Professional TV aerial and satellite installation services.',
-        'image_url': 'services/satelite.jpeg',
-        'detailed_description': 'Detailed information about aerial and satellite solutions...',
-        'more_info': (
-            '- Indoor and outdoor aerial installations\n'
-            '- Quick and efficient repair services\n'
-            '- Full range of high-quality equipment and upgrades'
-        )
-    },
-    'it_support': {
-        'id': 'it_support',
-        'title': 'IT Support and Consultation',
-        'description': (
-            'Comprehensive IT support services to improve efficiency and manage technological infrastructure.'
-        ),
-        'image_url': 'services/it_support.avif',
-        'detailed_description': 'Detailed information about IT support...',
-        'more_info': (
-            'We offer end-to-end IT support, helping you solve technical issues, enhance performance, and ensure system stability.'
-        )
-    },
     'cloud_services': {
         'id': 'cloud_services',
         'title': 'Cloud Solutions',
@@ -304,6 +292,18 @@ services_data = {
             'Our analytics tools provide actionable insights, empowering businesses to identify trends and optimize strategies effectively.'
         )
     },
+    'aerial_and_satellite_installation_solutions': {
+        'id': 'aerial_and_satellite_installation_solutions',
+        'title': 'Aerial & Satellite Installation Solutions',
+        'description': 'Professional TV aerial and satellite installation services.',
+        'image_url': 'services/satelite.jpeg',
+        'detailed_description': 'Detailed information about aerial and satellite solutions...',
+        'more_info': (
+            '- Indoor and outdoor aerial installations\n'
+            '- Quick and efficient repair services\n'
+            '- Full range of high-quality equipment and upgrades'
+        )
+    },
     'general_merchandise_supplies_services': {
         'id': 'general_merchandise_supplies_services',
         'title': 'General Merchandise Supplies Services',
@@ -313,7 +313,7 @@ services_data = {
         'image_url': 'services/about.jpeg',
         'detailed_description': 'Detailed information about merchandise supplies...',
         'more_info': (
-            'We supply IT hardware, office furniture, staff uniforms, and more. '
+            'We provide a wide range of Products Supplies to private and government sectors, including computers and other IT/IoT & Networking Hardwares and accessories.'
             'Our goal is to build long-term partnerships by consistently exceeding expectations.'
         )
     }
