@@ -104,11 +104,15 @@ def contact():
 def privacy_policy():
     return render_template('main/privacy_policies.html')
 
+    @main_bp.route('/terms of service')
+def terms_service():
+    return render_template('main/terms_service.html')
+
 # Full team list
 team = [
     {
-        "name": "KEVIN OCHAE",
-        "role": "Founder-Chief Technology Officer (CTO)",
+        "name": "ENG. KEVIN OCHAE",
+        "role": "Founder & Chief Technology Officer (CTO)",
         "image_url": "static/team/kevin.jpeg",
         "social_links": {
             "linkedin": "https://www.linkedin.com/in/kevin-ochae-909b64190",
@@ -118,7 +122,7 @@ team = [
     },
     {
         "name": "DAVID OCHAYE",
-        "role": "Co-Founder - Chief Operating Officer (COO)",
+        "role": "Co-Founder & Chief Operating Officer (COO)",
         "image_url": "static/team/dave.jpeg",
         "social_links": {
             "linkedin": "#",
