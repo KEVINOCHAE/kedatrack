@@ -104,6 +104,10 @@ def contact():
 def privacy_policy():
     return render_template('main/privacy_policies.html')
 
+@main_bp.route('/terms_of_service')
+def terms_of_service():
+    return render_template('main/terms_of_service.html')
+
 # Full team list
 team = [
     {
