@@ -121,7 +121,7 @@ team = [
         }
     },
     {
-        "name": "DAVID OCHAYE",
+        "name": "MR. DAVID OCHAYE",
         "role": "Co-Founder & Chief Operating Officer (COO)",
         "image_url": "static/team/dave.jpeg",
         "social_links": {
@@ -131,7 +131,7 @@ team = [
         }
     },
     {
-        "name": "HENRY AFUYA",
+        "name": "ENG. HENRY AFUYA",
         "role": "Lead Developer",
         "image_url": "static/team/henry1.jpeg",
         "social_links": {
