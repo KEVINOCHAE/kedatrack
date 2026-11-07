@@ -39,7 +39,7 @@ ordered-set
 packaging
 pg8000
 platformdirs
-psycopg
+psycopg[binary]
 psycopg2-binary
 Pygments
 PyJWT
