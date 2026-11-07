@@ -10,7 +10,7 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'super_secret_key')
     
     # Database configuration
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')# "sqlite:///kedatrack.db"
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL') or "sqlite:///kedatrack.db"
     SQLALCHEMY_TRACK_MODIFICATIONS = False  # Disable unnecessary overhead
     
     # Additional configurations (for future enhancements)
